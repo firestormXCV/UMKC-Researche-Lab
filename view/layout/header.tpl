@@ -1,21 +1,33 @@
 
-    <nav class="navbar navbar-expand-xl navbar-light bg-light topnav">
+    <nav class="navbar navbar-expand-xl navbar-light bg-light topnav fixed-top">
         <div class="container-fluid topnav">
-            <a href="#" class="navbar-brand">
+            <a href="#" class="navbar-brand logo">
                 <img src="ressources/assets/UMKC_logo.png" height="55" alt="Logo-UMKC">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <div class="navbar-nav">
-                    <a href="#" class="nav-item nav-link active">Home</a>
-                    <a href="#" class="nav-item nav-link">Profile</a>
-                    <a href="#" class="nav-item nav-link">Messages</a>
-                    <a href="#" class="nav-item nav-link disabled" tabindex="-1">Reports</a>
+            <div class="collapse navbar-collapse " id="navbarCollapse">
+                <div class="navbar-nav ms-auto">
+                    <a href="index.php?controle=home&action=home" class="nav-item nav-link active text-light ">Home</a>
+                    <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-light">Publication</a>
+                    <a href="#" class="nav-item nav-link text-light">Team</a>
+                    <a href="#" class="nav-item nav-link text-light">Teaching</a>
+                    <a href="#" class="nav-item nav-link text-light">Activity</a>
                 </div>
                 <div class="navbar-nav ms-auto">
-                    <a href="#" class="nav-item nav-link">Login</a>
+                    <?php
+                    //var_dump($_SESSION['profil']);
+                        
+						if(!isset($_SESSION['profil'])) {
+                            echo("<a href=\"index.php?controle=access&action=login\" class=\"nav-item nav-link text-light border border-white rounded px-3 \">Login</a>");
+                        }
+                        else{
+                            
+                            echo("<a href=\"index.php?controle=access&action=bye\" class=\"nav-item nav-link text-light border border-white rounded px-3 \">Logout</a>");
+                        }
+
+                    ?>
                 </div>
             </div>
         </div>

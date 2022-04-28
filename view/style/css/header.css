@@ -6,21 +6,26 @@ body {
   .topnav {
     overflow: hidden;
     background-color: #0066CC;
-    padding-top: 1;
+    padding-top: 10;
+    margin-bottom: 10px;
   }
   
   .topnav a {
-    float: left;
+    float: right;
     color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
     font-size: 17px;
+    margin-inline: 40px;
   }
-  
+
   .topnav a:hover {
-    background-color: #2476c8;
-    color: red;
-    border-radius: 10%;
+    background-color: #6ba1d6;
+    border-radius: 20%;
   }
-  
+
+.pubArray table{
+  margin-left: 10px;
+}
+
