@@ -6,7 +6,7 @@ $currentDirectory = dirname (getcwd());
 
     $errors = []; // Store errors here
 
-    $fileExtensionsAllowed = ['pdf','jpg','png']; // These will be the only file extensions allowed 
+    $fileExtensionsAllowed = ['pdf']; // These will be the only file extensions allowed 
 
     $fileName = $_FILES['the_file']['name'];
     $fileSize = $_FILES['the_file']['size'];
@@ -35,6 +35,8 @@ $currentDirectory = dirname (getcwd());
 
         if ($didUpload) {
           echo "The file " . basename($fileName) . " has been uploaded";
+          require($currentDirectory . "/modele/articleBD.php");
+          addArticleBD($title, $autor, $fileName, $date);
         } else {
           echo "An error occurred. Please contact the administrator.";
         }
@@ -46,8 +48,6 @@ $currentDirectory = dirname (getcwd());
 
     }
     
-    require($currentDirectory . "/modele/articleBD.php");
-    addArticleBD($title, $autor, $fileName, $date);
     $nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=article&action=displayAll";
     header ("Location:" . $nexturl);
 

@@ -1,7 +1,7 @@
 
     <nav class="navbar navbar-expand-xl navbar-light bg-light topnav fixed-top">
         <div class="container-fluid topnav">
-            <a href="#" class="navbar-brand logo">
+            <a href="index.php?controle=home&action=home" class="navbar-brand logo">
                 <img src="ressources/assets/UMKC_logo.png" height="55" alt="Logo-UMKC">
             </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -13,7 +13,8 @@
                     <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-light">Publication</a>
                     <a href="#" class="nav-item nav-link text-light">Team</a>
                     <a href="#" class="nav-item nav-link text-light">Teaching</a>
-                    <a href="#" class="nav-item nav-link text-light">Activity</a>
+                    <a href="index.php?controle=news&action=allNews" class="nav-item nav-link text-light">News</a>
+                    <a href="index.php?controle=location&action=locate" class="nav-item nav-link text-light">Location</a>
                 </div>
                 <div class="navbar-nav ms-auto">
                     <?php

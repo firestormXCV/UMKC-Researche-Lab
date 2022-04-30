@@ -1,4 +1,4 @@
-<div class="mt-5 mx-auto px-5 pt-5 rounded-8 border-3 border border-primary" style="width: 50%; border-radius:30px">
+<div class="pubArray mx-auto px-5 pt-5 rounded-8 border-3 border border-primary" style="width: 50%; border-radius:30px">
 
     <form action="index.php?controle=access&action=login" method="post">
     <!-- Email input -->
