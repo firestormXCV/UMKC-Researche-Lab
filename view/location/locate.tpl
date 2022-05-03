@@ -1,4 +1,4 @@
-<div class="pubArray d-flex flex-column justify-content-center mx-auto py-5"  style=" width: 80%; margin-top: 100px; margin-bottom: 50px">
+<div class="pubArray d-flex flex-column justify-content-center mx-auto py-5"  style=" width: 92%; margin-top: 100px; margin-bottom: 50px">
     
     <h2 class="text-center mb-5">Location</h2>
     <center>

@@ -1,9 +1,9 @@
 <?php
 
-$currentDirectory = dirname (getcwd());
+
 
     $uploadDirectory = "\\ressources\publication\\";
-
+    $currentDirectory = dirname (getcwd());
     $errors = []; // Store errors here
 
     $fileExtensionsAllowed = ['pdf']; // These will be the only file extensions allowed 

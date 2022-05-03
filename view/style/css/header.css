@@ -1,7 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background-color:white !important;
+    background-color:#eeeeee !important;
     
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -34,7 +34,7 @@ body {
   margin-top: 120px !important;
   margin-bottom: 20px !important;
   background-color:white;
-  border-radius: 10;
+  border-radius: 2%;
 }
 
 .pubArray table{

@@ -11,7 +11,7 @@
                 <div class="navbar-nav ms-auto">
                     <a href="index.php?controle=home&action=home" class="nav-item nav-link active text-light ">Home</a>
                     <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-light">Publication</a>
-                    <a href="#" class="nav-item nav-link text-light">Team</a>
+                    <a href="index.php?controle=team&action=showTeam" class="nav-item nav-link text-light">Team</a>
                     <a href="#" class="nav-item nav-link text-light">Teaching</a>
                     <a href="index.php?controle=news&action=allNews" class="nav-item nav-link text-light">News</a>
                     <a href="index.php?controle=location&action=locate" class="nav-item nav-link text-light">Location</a>
