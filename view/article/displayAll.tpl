@@ -82,7 +82,7 @@
 				
 				<tr>
 					
-					<td>
+					<td class=\"space\">
 						<ul>
 							<li>". $article['autor'] ." \" <a href=\"ressources/publication/" .
 							$article['fileName'] ."\" target=\"_blank\"> ". $article['title'] ." </a> \" "

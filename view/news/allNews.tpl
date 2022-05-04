@@ -47,7 +47,7 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 75%; margin-top: 100px,\">");
+		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 92%; margin-top: 100px,\">");
 
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
@@ -78,16 +78,16 @@
 							
 						</tr>
 					</thead>
-					<tbody>");
+					<tbody >");
 			}
 			
 			echo("
 				
 				<tr>
 					
-					<td>
+					<td class=\"space\">
 						<ul>
-							<li>". $news['date'] ." \" ". $news['title'] ." </a><br> \" " .
+							<li>". $news['date'] ." \" ". $news['title'] ." </a><br> " .
 							$news['content'] ."</li>
 						</ul>
 					<td>
@@ -99,5 +99,6 @@
 		echo("</tbody>
 		</table>
 		</div>");
+		
 
 	?>

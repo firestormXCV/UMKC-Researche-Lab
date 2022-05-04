@@ -45,3 +45,8 @@ body {
 .table>:not(caption)>*>* {
     border-bottom-width: 0px !important ;
 }
+
+.space {
+  padding: 0 !important;
+  line-height: 1em;
+}

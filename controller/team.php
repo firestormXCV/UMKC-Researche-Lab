@@ -1,62 +1,74 @@
 <?php
 
+
 $firstName=isset($_POST['firstName'])?trim($_POST['firstName']):''; // trim pour enlever les espaces avant et apres
 $lastName=isset($_POST['lastName'])?trim($_POST['lastName']):'';
-$eMail=isset($_POST['eMail'])?trim($_POST['eMail']):'';
-$homepage=isset($_POST['homepage'])?trim($_POST['homepage']):'';
+$eMail=(isset($_POST['eMail'])&&!empty($_POST['eMail']))?trim($_POST['eMail']):"NULL";
+$homepage=(isset($_POST['homepage'])&&!empty($_POST['homepage']))?trim($_POST['homepage']):"NULL";
 $diploma=isset($_POST['diploma'])?trim($_POST['diploma']):'';
 $researchInterest=isset($_POST['researchInterest'])?trim($_POST['researchInterest']):'';
 $startDate=isset($_POST['startDate'])?trim($_POST['startDate']):'';
-$endDate=isset($_POST['endDate'])?trim($_POST['endDate']):'';
+$endDate=(isset($_POST['endDate'])&&!empty($_POST['endDate']))?trim($_POST['endDate']):"0000-00-00";
 
 if (!empty($firstName)) {
-    
-    $uploadDirectory = "\\ressources\profilPicture\\";
     $currentDirectory = dirname (getcwd());
-    $errors = []; // Store errors here
+    if(!empty($_FILES['the_file']['name'])) {
 
-    $fileExtensionsAllowed = ['jpg',' png', 'jpeg']; // These will be the only file extensions allowed 
-
-    $fileName = $_FILES['the_file']['name'];
-    $fileSize = $_FILES['the_file']['size'];
-    $fileTmpName  = $_FILES['the_file']['tmp_name'];
-    $fileType = $_FILES['the_file']['type'];
-    $fileExtension = strtolower(end(explode('.',$fileName)));
-
-
-
-    $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
-
-    if (isset($_POST['submit'])) {
-
-    if (! in_array($fileExtension,$fileExtensionsAllowed)) {
+        $uploadDirectory = "\\ressources\profilPicture\\";
         
-        $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
-    }
+        $errors = []; // Store errors here
 
-    if ($fileSize > 4000000) {
-        $errors[] = "File exceeds maximum size (4MB)";
-    }
+        $fileExtensionsAllowed = ['jpg',' png', 'jpeg']; // These will be the only file extensions allowed 
 
-    if (empty($errors)) {
-        $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+        $fileName = $_FILES['the_file']['name'];
+        $fileSize = $_FILES['the_file']['size'];
+        $fileTmpName  = $_FILES['the_file']['tmp_name'];
+        $fileType = $_FILES['the_file']['type'];
+        $fileExtension = strtolower(end(explode('.',$fileName)));
 
-        if ($didUpload) {
-        echo "The file " . basename($fileName) . " has been uploaded";
-        $fullName = $fileName . $fileExtension;
-        require($currentDirectory . "/modele/TeamBD.php");
-        
-        addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $fullName);
+
+
+        $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
+
+        if (isset($_POST['submit'])) {
+
+        if (! in_array($fileExtension,$fileExtensionsAllowed)) {
+            
+            $errors[] = "This file extension is not allowed. Please upload a JPEG or PNG file";
+        }
+
+        if ($fileSize > 4000000) {
+            $errors[] = "File exceeds maximum size (4MB)";
+        }
+
+        if (empty($errors)) {
+            $didUpload = move_uploaded_file($fileTmpName, $uploadPath);
+
+            if ($didUpload) {
+            echo "The file " . basename($fileName) . " has been uploaded";
+            $fullName = $fileName;
+            
+            
+            
+            } else {
+            echo "An error occurred. Please contact the administrator.";
+            }
         } else {
-        echo "An error occurred. Please contact the administrator.";
+            foreach ($errors as $error) {
+            echo $error . "These are the errors" . "\n";
+            }
         }
-    } else {
-        foreach ($errors as $error) {
-        echo $error . "These are the errors" . "\n";
+
         }
     }
 
+    
+    if (!isset($fullName)) {
+        $fullName = "NULL";
     }
+    require($currentDirectory . "/modele/TeamBD.php");
+
+    addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $fullName);
     
     $nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=team&action=showTeam";
     
