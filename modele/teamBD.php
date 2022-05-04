@@ -32,27 +32,16 @@
 
 	function addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $pictureName) {
 		$currentDirectory = dirname (getcwd());
-
 		require($currentDirectory . "/modele/connectBD.php");
-        var_dump($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $pictureName);
+   
         $sql = "INSERT INTO `team` (`id`, `name`, `famillyName`, `diploma`, `pictureName`, `startDate`, `endDate`, `researchInterest`, `email` , `homepage`) 
             VALUES (NULL, '$firstName', '$lastName', '$diploma', '$pictureName', '$startDate', '$endDate', '$researchInterest', '$eMail', '$homepage');";
-        
-        var_dump($sql);
-        
-
 		try {
 			$commande = $pdo->prepare($sql);
-		
-			
-
-			$bool = $commande->execute();
-            var_dump($bool);
-            
+			$bool = $commande->execute();            
 		} catch (PDOException $e){
 			echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
 			die();
 		}
 	}
-
 ?>

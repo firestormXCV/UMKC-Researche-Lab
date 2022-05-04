@@ -19,7 +19,8 @@
 			<?php  require ("./view/layout/header.tpl"); ?>
 		<!--end header-->
 
-		<div id ="main"> 
+		<div id ="main">
+			<button onclick="topFunction()" id="myBtn" title="Go to top"><i class="bi bi-arrow-up"></i></button>
 			<?php  require ("./view/" . $controle . "/" . $action . ".tpl"); ?>  
 		</div>
 			<?php  require ("./view/layout/footer.tpl"); ?>

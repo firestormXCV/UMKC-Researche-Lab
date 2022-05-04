@@ -1,0 +1,29 @@
+{
+    "pictureName": "admin.png",
+    "firstName": "Farid",
+    "lastName": "Naït-Abdesselam",
+    "title": ["Professor Paris Descartes University", "Professor UMKC University of Kansas CIty Missouri"],
+    "eMail": "naf@umkc.edu",
+    "CV": "CV-27_04_2022.pdf",
+    "content": [{
+        "title": "Research Interests",
+        "content": [
+            "Mobile Wireless Networking","Online Social Networks", "Network Analysis", "Information and Communication Technologies for Development (ICTD)"
+        ]},
+        {"title":"Selected UCSB Leadership",
+        "content": [
+            "Associate Dean and Faculty Equity Advisor, College of Engineering (2019 - present)", "Chair of the Chancellor's Advisory Committee on the Status of Women (2014 - 2021)",
+            "Vice Chair of the Computer Science Department (2009 - 2015; 2017 - 2019)", "Associate Director for the Center for Information Technology and Society (2012 - 2015)"
+        ]},
+        {"title": "Selected Honors:",
+        "content": [
+            "ACM Fellow; AAAS Fellow; IEEE Fellow", "2015 NCWIT Harrold and Notkin Research and Graduate Mentoring Award", "2012 UCSB Outstanding Graduate Mentor"
+        ]},
+        {"title": "Official Bio:",
+        "content":[
+            "Elizabeth M. Belding is a Professor in the Department of Computer Science at the University of California, Santa Barbara.  Prof. Belding's research focuses on mobile and wireless networking, including network performance analysis, and information and communication technologies for development (ICTD).  She is a co-developer of the AODV routing protocol for mobile networks, on which 802.11s and Zigbee technologies are based in part.   The original AODV paper published in WMCSA'99 received the 2018 ACM SIGMOBILE Test of Time Award.  Prof. Belding applies her wireless network expertise to a wide range of contexts, and is particularly interested in improving Internet and cellular accessibility in developing and resource-challenged communities worldwide.  Her ICTD projects have included work in Zambia, South Africa, Mongolia, and refugee camps.  Most recently, she has been working with Native American communities around the US.  She is the founder and director of the Mobility Management and Networking (MOMENT) Laboratory.  Prof. Belding is the author of over 150 technical papers on wireless networking and has served on over 80 conference technical program committees.  She was Vice Chair of the UCSB Computer Science department 2009-15 and 2017-19.  She is currently an Associate Dean and Faculty Equity Advisor in the UCSB College of Engineering.  Prof. Belding is the recipient of an NSF CAREER Award, and a 2002 MIT Technology Review 100 award, awarded to the world’s top young investigators. She is an ACM Fellow, AAAS Fellow and IEEE Fellow.  She is particularly proud of receiving the UCSB Outstanding Graduate Mentor Award in 2012 and the NCWIT Harrold and Notkin Research and Graduate Mentoring Award in 2015 for her mentorship of graduate students."
+        ]
+    }]
+    
+
+}
