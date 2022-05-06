@@ -11,7 +11,18 @@
                 <div class="navbar-nav ms-auto">
                     <a href="index.php?controle=home&action=home" class="nav-item nav-link active text-light ">Home</a>
                     <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-light">Publication</a>
-                    <a href="index.php?controle=team&action=showTeam" class="nav-item nav-link text-light">Team</a>
+                    
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Team
+                        </a>
+                        <ul class="dropdown-menu bg-primary drop" aria-labelledby="navbarScrollingDropdown">
+                          <li><a class="dropdown-item" href="index.php?controle=team&action=showTeam">Presentation</a></li>
+                          <li><a class="dropdown-item" href="index.php?controle=gallery&action=showGallery">Gallery</a></li>
+                        </ul>
+                    </li>
+
                     <a href="#" class="nav-item nav-link text-light">Teaching</a>
                     <a href="index.php?controle=news&action=allNews" class="nav-item nav-link text-light">News</a>
                     <a href="index.php?controle=location&action=locate" class="nav-item nav-link text-light">Location</a>

@@ -57,7 +57,7 @@
 						<form action=\"controller/addArticle.php\" method=\"post\" enctype=\"multipart/form-data\">
 						<div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">Title</label>
-								<input name=\"title\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
+								<input name=\"title\" value=\"\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
 						</div>
 						<div class=\"mb-3\">
 							<label for=\"recipient-name\" class=\"col-form-label\">Autor</label>

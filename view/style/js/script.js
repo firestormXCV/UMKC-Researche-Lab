@@ -41,15 +41,37 @@ function topFunction() {
 }
 
 function modify(id) {
-    console.log(id);
     
+
     let inputTitle = document.getElementById("recipient-title-modify");
     let inputAutor = document.getElementById("recipient-autor-modify");
     let inputDate = document.getElementById("recipient-date-modify");
-    let  message = data;
-    console.log(message);
-    inputTitle.value = "attributeValue";
-    inputAutor.value = "autor";
-    inputDate.value = "date";
-    console.log(inputTitle);
+    let title;
+    let autor;
+    let date;
+   
+    $.ajax({    
+        type: "POST",
+        url: "modele/modifyBD.php",             
+        dataType: "html",
+        data: {id},         
+        success: function(data){       
+            //console.log(data) 
+            $("#recipient-title-modify").val(data.split("¤")[0])
+            $("#recipient-autor-modify").val(data.split("¤")[1])
+            $("#recipient-date-modify").val(data.split("¤")[2])
+            //inputTitle.value = 
+            console.log('aa') 
+            autor = data.split("¤")[1]
+            console.log('aa') 
+            date = data.split("¤")[2]
+            console.log('aa')  
+        }
+    });
+    
+    
+    
+    inputAutor.value = autor;
+    inputDate.value = date;
+   
 }

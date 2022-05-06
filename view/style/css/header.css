@@ -8,10 +8,11 @@ body {
   }
   
   .topnav {
-    overflow: hidden;
+    
     background: linear-gradient(to right, #006be6, #334bff);;
     padding-bottom: 0 !important;
     padding-top: 0 !important;
+    
   }
   
   .topnav a {
@@ -27,7 +28,20 @@ body {
   .topnav a:hover {
     background-color: #6ba1d6;
     border-radius: 20%;
+  }
 
+  .topnav .active {
+    background-color: #6ba1d6;
+    border-radius: 20%;
+  }
+
+  .drop a {   
+    padding: 6px;
+    margin-inline: 0px;
+  }
+
+  .drop a:hover {   
+    border-radius: 10%;
   }
 
 .pubArray {
