@@ -1,12 +1,9 @@
 
 
-console.log('ezefz ');
-
 
 function initNews() {
-    console.log('hiiiii');
+
     let newsAddButton = document.getElementById("newsAdd");
-    console.log(newsAddButton);
 
     mybutton = document.getElementById("myBtn");
 
@@ -17,7 +14,7 @@ function initNews() {
 
 
 function addLink() {
-    console.log("im in");
+
     let text = document.getElementById("message-text");
     text.value += "<a href=\"Your Link\" target=\"_blank\">The text of the link</a>"
     
@@ -41,37 +38,28 @@ function topFunction() {
 }
 
 function modify(id) {
-    
-
-    let inputTitle = document.getElementById("recipient-title-modify");
-    let inputAutor = document.getElementById("recipient-autor-modify");
-    let inputDate = document.getElementById("recipient-date-modify");
-    let title;
-    let autor;
-    let date;
-   
+let test;
+let tout;
     $.ajax({    
         type: "POST",
         url: "modele/modifyBD.php",             
         dataType: "html",
         data: {id},         
         success: function(data){       
-            //console.log(data) 
+          console.log(data.split("¤")[5]);
             $("#recipient-title-modify").val(data.split("¤")[0])
             $("#recipient-autor-modify").val(data.split("¤")[1])
             $("#recipient-date-modify").val(data.split("¤")[2])
-            //inputTitle.value = 
-            console.log('aa') 
-            autor = data.split("¤")[1]
-            console.log('aa') 
-            date = data.split("¤")[2]
-            console.log('aa')  
+            $("#recipient-bibtex-modify").val(data.split("¤")[3])
+            $("#recipient-place-modify").val(data.split("¤")[4])
+            $("#recipient-type-modify").val(data.split("¤")[5])
+            $("#recipient-id-modify").val(id)
+            test = data.split("¤")[5]
+            tout = data
         }
-    });
-    
-    
-    
-    inputAutor.value = autor;
-    inputDate.value = date;
-   
+        
+    });   
+
+    console.log(test);
+    console.log(tout);
 }

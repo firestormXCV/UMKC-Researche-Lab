@@ -39,6 +39,10 @@ $id=isset($_POST['id'])?trim($_POST['id']):'';
     echo ($articles[0]['title'] . "¤");
     echo ($articles[0]['autor'] . "¤");
     echo ($articles[0]['date'] . "¤");
+    echo ($articles[0]['bibtex'] . "¤");
+    echo ($articles[0]['place'] . "¤");
+    echo ($articles[0]['type'] . "¤");
+    echo ($articles[0]['id'] . "¤");
     
     function modifyArticle() {
         

@@ -1,5 +1,55 @@
 <div class="pubArray d-flex flex-column justify-content-center mx-auto py-5"  style=" width: 92%; margin-top: 100px; margin-bottom: 50px">
     <div class="d-flex flex-rom justify-content-evenly">
+    <div class="d-flex flex-column w-100 pe-5">
+            
+            <?php
+
+            
+            $admin = $_SESSION["adminBio"];
+
+            $team = $_SESSION['team'][0];
+                echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
+											
+                    <div class=\"px-2 bd-highlight\">
+                        <img src=\"./ressources/profilPicture/" . $admin['pictureName']. "\" alt=\"PP\" width=\"200\" height=\"200\"/>
+                    </div>
+            
+                    <div class=\" d-flex flex-column flex-fill\">
+                        <p>   <bold class=\"fw-bold\">   ". $admin['firstName'] ." ". $admin['lastName'] ."</bold></p>
+                        <ul>");
+
+                foreach($admin["title"] as $title) {
+                    echo("<li>" . $title ." </li>");
+                }
+                
+                echo("</ul>
+                        <p>   <bold class=\"fw-bold \">Contact: </bold>".  $admin['eMail'] ."</p>
+                        <a href=\"ressources/". $admin["CV"]  ."\" target=\"_blank\"> Here is my CV </a>
+                        
+                                                   
+                </div>
+                        
+              </div>");
+              
+            foreach($admin["content"] as $content) {
+
+
+                  echo("<h5 class=\"homeTitle\">" . $content["title"]. "</h5>");
+
+                if (count($content["content"]) > 1) {
+                    foreach($content["content"] as $inside) {
+                        
+                        echo("<ul>");
+                        echo(
+                        "<li class=\"home\">". $inside . "</li>");
+                        echo("</ul>"); 
+                    }                   
+                } else {
+                    echo("<p class=\"ms-3\">". $content["content"][0] . "</p>");
+                }                
+            }
+            ?>
+        </div>
         <div class="d-flex flex-column w-100 ps-5">
             <div class="d-flex flex-rom homeNews mb-3">
                 <img class="align-self-center pb-2 ps-3" src="ressources/assets/UMKC_logo.png" height="80" alt="Logo-UMKC">
@@ -66,55 +116,6 @@
             </div>
         </div>
 
-        <div class="d-flex flex-column w-100 pe-5">
-            
-            <?php
-
-            
-            $admin = $_SESSION["adminBio"];
-
-            $team = $_SESSION['team'][0];
-                echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
-											
-                    <div class=\"px-2 bd-highlight\">
-                        <img src=\"./ressources/profilPicture/" . $admin['pictureName']. "\" alt=\"PP\" width=\"200\" height=\"200\"/>
-                    </div>
-            
-                    <div class=\" d-flex flex-column flex-fill\">
-                        <p>   <bold class=\"fw-bold\">   ". $admin['firstName'] ." ". $admin['lastName'] ."</bold></p>
-                        <ul>");
-
-                foreach($admin["title"] as $title) {
-                    echo("<li>" . $title ." </li>");
-                }
-                
-                echo("</ul>
-                        <p>   <bold class=\"fw-bold \">Contact: </bold>".  $admin['eMail'] ."</p>
-                        <a href=\"ressources/". $admin["CV"]  ."\" target=\"_blank\"> Here is my CV </a>
-                        
-                                                   
-                </div>
-                        
-              </div>");
-              
-              foreach($admin["content"] as $content) {
-
-
-                  echo("<h5 class=\"homeTitle flex-fill\">" . $content["title"]. "</h5>");
-
-                if (count($content["content"]) > 1) {
-                    foreach($content["content"] as $inside) {
-                        
-                        echo("<ul>");
-                        echo(
-                        "<li>". $inside . "</li>");
-                        echo("</ul>"); 
-                    }                   
-                } else {
-                    echo("<p>". $content["content"][0] . "</p>");
-                }                
-              }
-            ?>
-        </div>
+        
     </div>
 </div>

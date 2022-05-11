@@ -1,7 +1,5 @@
 <?php
 
-
-
     $uploadDirectory = "\\ressources\publication\\";
     $currentDirectory = dirname (getcwd());
     $errors = []; // Store errors here
@@ -17,6 +15,10 @@
     $autor=isset($_POST['autor'])?trim($_POST['autor']):''; // trim pour enlever les espaces avant et apres
     $date=isset($_POST['date'])?trim($_POST['date']):'';
     $title=isset($_POST['title'])?trim($_POST['title']):'';
+    $type=isset($_POST['type'])?trim($_POST['type']):'';
+    $place=isset($_POST['place'])?trim($_POST['place']):'';
+    $bibtex=isset($_POST['bibtex'])?trim($_POST['bibtex']):'';
+    
 
     $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
 
@@ -36,7 +38,7 @@
         if ($didUpload) {
           echo "The file " . basename($fileName) . " has been uploaded";
           require($currentDirectory . "/modele/articleBD.php");
-          addArticleBD($title, $autor, $fileName, $date);
+          addArticleBD($title, $autor, $fileName, $date,$type, $place, $bibtex);
         } else {
           echo "An error occurred. Please contact the administrator.";
         }

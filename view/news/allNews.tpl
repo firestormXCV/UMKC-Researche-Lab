@@ -60,45 +60,21 @@
 			$date2 = strtotime($currentDate);
 			
 			if (date("Y", $date1) < date("Y", $date2)) {
-
-				
-
+				echo("</ul>");
 				$currentDate = $news['date'];
-
-				if (!$begin) {
-					echo("</tbody>");
-				} else {
-					$begin = false;
-				}
-				echo("<thead class=\"border border-white\">
-						<tr>
-							<th class=\"table-primary \" scope=\"col\">". date("Y", $date1) ."</th>
-							<th class=\"table-primary\" scope=\"col\"></th>
-							
-							
-						</tr>
-					</thead>
-					<tbody >");
+				echo("<h5 class=\"homeTitle\" >". date("Y", $date1) ."</h5>");
+				echo("<ul>");
 			}
-			
+
 			echo("
-				
-				<tr>
-					
-					<td class=\"space\">
-						<ul>
-							<li>". $news['date'] ." \" ". $news['title'] ." </a><br> " .
-							$news['content'] ."</li>
-						</ul>
-					<td>
-				</tr>");
+						
+				<li>". $news['date'] ." \" ". $news['title'] ." </a><br> " .
+				$news['content'] ."</li>");
+
+							
+							echo("</li>
+						");
 				
 		}
-		
-		
-		echo("</tbody>
-		</table>
-		</div>");
-		
-
+		echo("</ul>");
 	?>

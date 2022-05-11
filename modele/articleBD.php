@@ -26,18 +26,36 @@
 		}
     }
 
-	function addArticleBD($title, $autor, $fileName, $date) {
+	function addArticleBD($title, $autor, $fileName, $date, $type, $place, $bibtex) {
 		$currentDirectory = dirname (getcwd());
 
 		require($currentDirectory . "/modele/connectBD.php");
 
-        $sql = "INSERT INTO `publication` (`id`, `title`, `autor`, `fileName`, `date`) VALUES (NULL, '$title', '$autor', '$fileName', '$date');";
+        $sql = "INSERT INTO `publication` (`id`, `title`, `autor`, `fileName`, `date`, `bibtex`, `place`, `type` ) VALUES (NULL, '$title', '$autor', '$fileName', '$date', '$bibtex', '$place', '$type');";
 		try {
 			$commande = $pdo->prepare($sql);
 		
 			
 
 			$bool = $commande->execute();
+		} catch (PDOException $e){
+			echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
+			die();
+		}
+	}
+
+	function modifyArticleBD($title, $autor, $date, $type, $place, $bibtex, $id, $fileName) {
+		$currentDirectory = dirname (getcwd());
+
+		require($currentDirectory . "/modele/connectBD.php");
+
+		$sql = "UPDATE publication 
+					SET title ='$title' , autor = '$autor', date = '$date', bibtex = '$bibtex',place = '$place', type = '$type', fileName = '$fileName'
+					WHERE id ='$id';";
+		try {
+			$commande = $pdo->prepare($sql);
+			$bool = $commande->execute();
+			
 		} catch (PDOException $e){
 			echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
 			die();
