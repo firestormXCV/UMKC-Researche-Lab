@@ -43,6 +43,44 @@
 					
 					</div>
 				</div>
+				</div>
+				
+				<div class=\"modal fade\" id=\"modifModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+				<div class=\"modal-dialog\">
+					<div class=\"modal-content\">
+					<div class=\"modal-header\">
+						<h5 class=\"modal-title\" id=\"exampleModalLabel\">Modify Publication</h5>
+						<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+					</div>
+					<div class=\"modal-body\">
+						<form action=\"controller/modifyNews.php\" method=\"post\" enctype=\"multipart/form-data\">
+							<input type=\"hidden\" id=\"recipient-id-modify\" name=\"id\" value=\"\">
+							<div class=\"mb-3\">
+									<label for=\"recipient-name\" class=\"col-form-label\">Title</label>
+									<input name=\"title\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
+							</div>
+							
+							<div class=\"mb-3\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Content</label>
+								<textarea name=\"content\" class=\"form-control\" id=\"recipient-content-modify\"></textarea>
+							</div>
+
+							<button id=\"newsAdd\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Link</button>
+
+							<div class=\"mb-3\">
+								<label for=\"message-text\" class=\"col-form-label\">Date</label>
+								<input name=\"date\" required type=\"date\" class=\"form-control\" id=\"recipient-date-modify\">
+							</div>
+							
+							<div class=\"d-flex justify-content-between mt-2\">
+								<button type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Start Upload\">Publish</button>
+								<button type=\"button\" class=\"btn btn-secondary flex-directi\" data-bs-dismiss=\"modal\">Cancel</button>
+							</div>
+						</form>
+					</div>
+					
+					</div>
+				</div>
 				</div>");
 			}
 
@@ -68,12 +106,12 @@
 
 			echo("
 						
-				<li>". $news['date'] ." \" ". $news['title'] ." </a><br> " .
-				$news['content'] ."</li>");
-
-							
-							echo("</li>
-						");
+				<li class=\"news\">". $news['date'] ." <bold class=\"fw-bold \">". $news['title'] .": </bold> </a> " .
+				$news['content']);
+				if (isset($_SESSION['profil'])) {
+					echo("<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>");
+				}
+				echo("</li>");
 				
 		}
 		echo("</ul>");

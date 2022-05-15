@@ -5,13 +5,13 @@ $id=isset($_POST['id'])?trim($_POST['id']):'';
 
     // fetch query
 
-    function fetch_data($id, &$articles){
+    function fetch_data($id, &$news){
         
         $currentDirectory = dirname (getcwd());
 
         require($currentDirectory . "/modele/connectBD.php");
         
-        $sql = "SELECT * FROM publication WHERE id=" . $id.";";
+        $sql = "SELECT * FROM news WHERE id=" . $id.";";
         try{
             $commande = $pdo->prepare($sql);
 			$bool = $commande->execute();
@@ -25,24 +25,19 @@ $id=isset($_POST['id'])?trim($_POST['id']):'';
 			die(); // On arrête tout
 		}
         if (count($resultat) == 0) {
-			$articles=array(); 
+			$news=array(); 
 			
 		}
 		else {
-			$articles = $resultat;
+			$news = $resultat;
 			//var_dump($profil);
-			
 		}
     }
 
-    $fetchData= fetch_data($id, $articles);
-    echo ($articles[0]['title'] . "¤");
-    echo ($articles[0]['autor'] . "¤");
-    echo ($articles[0]['date'] . "¤");
-    echo ($articles[0]['bibtex'] . "¤");
-    echo ($articles[0]['place'] . "¤");
-    echo ($articles[0]['type'] . "¤");
-    echo ($articles[0]['id'] . "¤");
-    
+    $fetchData= fetch_data($id, $news);
+
+    echo ($news[0]['title'] . "¤");
+    echo ($news[0]['content'] . "¤");
+    echo ($news[0]['date'] . "¤");
 
 ?>

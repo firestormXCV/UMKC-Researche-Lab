@@ -41,7 +41,7 @@ function login() {
 }
 
 function bye() {
-    session_destroy();
+    $_SESSION['profil'] = NULL;
     header("Location: index.php");
 }	
 ?>

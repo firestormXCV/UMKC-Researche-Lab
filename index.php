@@ -5,8 +5,8 @@
         $controle = $_GET["controle"];
         $action = $_GET["action"];
     } else {
-        $controle = "article";
-        $action = "displayAll";
+        $controle = "home";
+        $action = "home";
     }
 
     require_once "./controller/$controle.php";

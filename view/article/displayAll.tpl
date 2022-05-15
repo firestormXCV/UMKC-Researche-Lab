@@ -72,7 +72,7 @@
 						</div>
 					<div class=\"modal-body\">
 						<form action=\"controller/modifyArticle.php\" method=\"post\" enctype=\"multipart/form-data\">
-							<input type=\"text\" id=\"recipient-id-modify\" name=\"id\" value=\"\">
+							<input type=\"hidden\" id=\"recipient-id-modify\" name=\"id\" value=\"\">
 							<div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">Title</label>
 								<input name=\"title\" value=\"\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
@@ -144,22 +144,31 @@
 
 			echo("
 			
-				<li>". $article['autor'] ." \" <a href=\"ressources/publication/" .
-				$article['fileName'] ."\" target=\"_blank\"> ". $article['title'] ." </a> \" "
-				. $article['date'] . " ". $article['type'] ." " . $article['place'] ."
-				<a class=\"\" data-bs-toggle=\"collapse\" href=\"#bibtex". $article['id'] ."\" role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
-				[bibtex]
-				</a>
-				<div class=\"collapse\" id=\"bibtex". $article['id'] ."\">
-					<div class=\"card card-body\">
-						". nl2br($article['bibtex']) ."
+				<li>");
+				if (!isset($_SESSION['profil'])) {
+					echo("<div class=\"py-2\">");
+				}
+					echo(" ". $article['autor'] ." \" <a href=\"ressources/publication/" .
+					$article['fileName'] ."\" target=\"_blank\"> ". $article['title'] ." </a> \" "
+					. $article['date'] . " ". $article['type'] ." " . $article['place'] ."
+					<a class=\"\" data-bs-toggle=\"collapse\" href=\"#bibtex". $article['id'] ."\" role=\"button\" aria-expanded=\"false\" aria-controls=\"collapseExample\">
+					[bibtex]
+					</a>
+					<div class=\"collapse\" id=\"bibtex". $article['id'] ."\">
+						<div class=\"card card-body\">
+							". nl2br($article['bibtex']) ."
+						</div>
 					</div>
-				</div>
-				<a href=\"ressources/publication/" .
-				$article['fileName'] ."\" class='bi bi-file-pdf' style='color: red' target=\"_blank\"></a> ");
+					<a href=\"ressources/publication/" .
+					$article['fileName'] ."\" class='bi bi-file-pdf' style='color: red' target=\"_blank\"></a>");
 
 				if (isset($_SESSION['profil'])) {
-					echo("<button id=\"tootoo\" onclick=\"modify(".  $article['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>");
+					echo("</div>");
+				}
+				
+				if (isset($_SESSION['profil'])) {
+					echo("<button id=\"tootoo\" onclick=\"modify(".  $article['id'] .");\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
+						  <button id=\"delete\" onclick=\"deleteArticle(".  $article['id'] .");\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
 				}
 				echo("</li>
 			");

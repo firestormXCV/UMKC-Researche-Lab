@@ -1,13 +1,13 @@
 <div class="pubArray d-flex flex-column justify-content-center mx-auto py-5"  style=" width: 92%; margin-top: 100px; margin-bottom: 50px">
     <div class="d-flex flex-rom justify-content-evenly">
-    <div class="d-flex flex-column w-100 pe-5">
+    <div class="d-flex flex-column w-100 ps-5">
             
             <?php
 
             
             $admin = $_SESSION["adminBio"];
 
-            $team = $_SESSION['team'][0];
+            
                 echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
 											
                     <div class=\"px-2 bd-highlight\">
@@ -50,7 +50,7 @@
             }
             ?>
         </div>
-        <div class="d-flex flex-column w-100 ps-5">
+        <div class="d-flex flex-column w-100 pe-5">
             <div class="d-flex flex-rom homeNews mb-3">
                 <img class="align-self-center pb-2 ps-3" src="ressources/assets/UMKC_logo.png" height="80" alt="Logo-UMKC">
             </div>

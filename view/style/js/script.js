@@ -38,8 +38,7 @@ function topFunction() {
 }
 
 function modify(id) {
-let test;
-let tout;
+
     $.ajax({    
         type: "POST",
         url: "modele/modifyBD.php",             
@@ -54,12 +53,37 @@ let tout;
             $("#recipient-place-modify").val(data.split("¤")[4])
             $("#recipient-type-modify").val(data.split("¤")[5])
             $("#recipient-id-modify").val(id)
-            test = data.split("¤")[5]
-            tout = data
         }
         
     });   
+}
 
-    console.log(test);
-    console.log(tout);
+function modifyNews(id) {
+  $.ajax({    
+    type: "POST",
+    url: "modele/modifyNewsBD.php",             
+    dataType: "html",
+    data: {id},         
+    success: function(data){       
+        console.log(data);
+        $("#recipient-title-modify").val(data.split("¤")[0])
+        $("#recipient-content-modify").val(data.split("¤")[1])
+        $("#recipient-date-modify").val(data.split("¤")[2])
+        $("#recipient-id-modify").val(id)
+    }   
+});  
+}
+
+function deleteArticle(id) {
+  console.log('a')
+  $.ajax({    
+    type: "POST",
+    url: "modele/deleteArticleBD.php",             
+    dataType: "html",
+    data: {id},         
+    success: function(data){       
+        console.log(data);
+        
+    }   
+});  
 }

@@ -41,6 +41,25 @@ function displayNews(&$news) {
     }
 }
 
+function modifyNewsBD($title, $content, $date, $id) {
+    $currentDirectory = dirname (getcwd());
+
+    require($currentDirectory . "/modele/connectBD.php");
+
+    $sql = "UPDATE news 
+                SET title ='$title' , content = '$content', date = '$date'
+                WHERE id ='$id';";
+    try {
+        $commande = $pdo->prepare($sql);
+        $bool = $commande->execute();
+        
+    } catch (PDOException $e){
+        echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
+        die();
+    }
+
+}
+
 
 
 ?>
