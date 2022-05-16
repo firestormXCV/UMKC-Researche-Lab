@@ -39,8 +39,7 @@ $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
 
         if ($didUpload) {
           echo "The file " . basename($fileName) . " has been uploaded";
-          require($currentDirectory . "/modele/articleBD.php");
-          modifyArticleBD($title, $autor, $date,$type, $place, $bibtex, $id, $fileName);
+          
         } else {
           echo "An error occurred. Please contact the administrator.";
         }
@@ -51,6 +50,9 @@ $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
       }
 
     }
+    require($currentDirectory . "/modele/articleBD.php");
+          
+    modifyArticleBD($title, $autor, $date,$type, $place, $bibtex, $id, $fileName);
 
 
 $nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=article&action=displayAll";

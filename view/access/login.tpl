@@ -23,20 +23,14 @@
         </span>
         </div>
 
-        <div class="col">
-        <!-- Simple link -->
-        <a href="#!">Forgot password?</a>
-        </div>
+        
     </div>
 
     <!-- Submit button -->
     <div class="row d-flex text-center" style="width: 100%;">
         <button type="submit" class="btn btn-primary btn-block mb-4 ">Sign in</button>
     </div>
-    <!-- Register buttons -->
-    <div class="text-center">
-        <p>Not a member? <a href="#!">Register</a></p>
-    </div>
+
     </form>
     <div id ="msgLog"> <?php $msg=isset($msgLog)?trim($msgLog):''; echo $msg; ?> </div>
 </div>

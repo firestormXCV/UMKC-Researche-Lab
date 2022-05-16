@@ -89,7 +89,10 @@
 
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
-		}	
+		}
+
+		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">News</h2>");
+
 		echo("<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
 		
 		foreach($_SESSION['news'] as $news) {
@@ -109,7 +112,8 @@
 				<li class=\"news\">". $news['date'] ." <bold class=\"fw-bold \">". $news['title'] .": </bold> </a> " .
 				$news['content']);
 				if (isset($_SESSION['profil'])) {
-					echo("<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>");
+					echo("<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
+						<button id=\"delete\" onclick=\" deleteArticle(".  $news['id'] .", 'news');\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
 				}
 				echo("</li>");
 				

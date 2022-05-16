@@ -74,16 +74,17 @@ function modifyNews(id) {
 });  
 }
 
-function deleteArticle(id) {
-  console.log('a')
+function deleteArticle(id, table) {
+  
+  console.log(table)
   $.ajax({    
     type: "POST",
-    url: "modele/deleteArticleBD.php",             
+    url: "modele/deleteBD.php",             
     dataType: "html",
-    data: {id},         
+    data: {id, table},         
     success: function(data){       
         console.log(data);
-        
+        document.location.reload(true)
     }   
 });  
 }

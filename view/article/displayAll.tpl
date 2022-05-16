@@ -126,7 +126,9 @@
 		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 92%; margin-top: 100px,\">");
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
-		}	
+		}
+		
+		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">Publication</h2>");
 
 		echo("<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
 		
@@ -167,9 +169,9 @@
 				}
 				
 				if (isset($_SESSION['profil'])) {
-					echo("<button id=\"tootoo\" onclick=\"modify(".  $article['id'] .");\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
-						  <button id=\"delete\" onclick=\"deleteArticle(".  $article['id'] .");\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
-				}
+					echo("<button id=\"tootoo\" onclick=\"modify(".  $article['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
+						  <button id=\"delete\" onclick=\" deleteArticle(".  $article['id'] .", 'publication');\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
+				} 
 				echo("</li>
 			");
 				

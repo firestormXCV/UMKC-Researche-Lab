@@ -53,6 +53,7 @@
 					SET title ='$title' , autor = '$autor', date = '$date', bibtex = '$bibtex',place = '$place', type = '$type', fileName = '$fileName'
 					WHERE id ='$id';";
 		try {
+			
 			$commande = $pdo->prepare($sql);
 			$bool = $commande->execute();
 			
