@@ -1,31 +1,18 @@
 
     <nav class="navbar navbar-expand-xl navbar-light bg-light topnav fixed-top">
-        <div class="container-fluid topnav">
-            <a href="index.php?controle=home&action=home" class="navbar-brand logo">
-                <img src="ressources/assets/UMKC_logo_bleu.png" height="55" alt="Logo-UMKC">
-            </a>
+        <div class="container-fluid topnav mx-5 px-5 py-3">
+
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarCollapse">
-                <div class="navbar-nav ms-auto">
-                    <a href="index.php?controle=home&action=home" class="nav-item nav-link active text-dark ">Home</a>
-                    <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-dark">Publication</a>
-                    
-
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Team
-                        </a>
-                        <ul class="dropdown-menu bg-light drop" aria-labelledby="navbarScrollingDropdown">
-                          <li><a class="dropdown-item text-dark" href="index.php?controle=team&action=showTeam">Presentation</a></li>
-                          <li><a class="dropdown-item text-dark" href="index.php?controle=gallery&action=showGallery">Gallery</a></li>
-                        </ul>
-                    </li>
-
-                    <a href="#" class="nav-item nav-link text-dark">Teaching</a>
-                    <a href="index.php?controle=news&action=allNews" class="nav-item nav-link text-dark">News</a>
-                    <a href="index.php?controle=location&action=locate" class="nav-item nav-link text-dark">Location</a>
+                <div class="navbar-nav">
+                    <a href="index.php?controle=home&action=home" class="nav-item nav-link active text-dark "><bold class="fw-bold ">Home</bold></a>
+                    <a href="soxs/index.php?controle=homeLab&action=homeLab" class="nav-item nav-link text-dark"><bold class="fw-bold">Research</bold></a>
+                    <a href="index.php?controle=teaching&action=teaching" class="nav-item nav-link text-dark"><bold class="fw-bold">Teaching</bold></a>
+                    <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-dark"><bold class="fw-bold">Publication</bold></a>
+                    <a href="index.php?controle=services&action=services" class="nav-item nav-link text-dark"><bold class="fw-bold">Services</bold></a>
+                    <a href="index.php?controle=personal&action=personal" class="nav-item nav-link text-dark"><bold class="fw-bold">Personal</bold></a>
                 </div>
                 <div class="navbar-nav ms-auto">
                     <?php

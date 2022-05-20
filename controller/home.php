@@ -10,6 +10,17 @@ function home() {
 	// Display data
 
 	$_SESSION['adminBio'] = $json_data;
+	
+	require("./model/newsBD.php");
+    if(displayNews($news)){
+		$_SESSION['news'] = $news;
+        
+        
+	}
+	else{
+		$msg='No news for the moment ! Please try later bro';
+	}
+
 
 	require ("./view/layout/layout.tpl"); //layout lançant le template de vue du service
 }

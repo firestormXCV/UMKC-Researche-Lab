@@ -16,6 +16,7 @@
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@350&display=swap" rel="stylesheet">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		
+		
   
 	</head>  
 	<body onload="initNews()" > 

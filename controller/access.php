@@ -8,7 +8,7 @@ function login() {
 
     if (count($_POST)==0) require ("./view/layout/layout.tpl");
     else {
-        require('./modele/accessBD.php');
+        require('./model/accessBD.php');
         if(verif_LoginBD($email, $mdp, $profil)) {
             $_SESSION['profil'] = $profil;
 

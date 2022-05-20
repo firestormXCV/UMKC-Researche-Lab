@@ -9,7 +9,7 @@
 				echo("			
 				
 				<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-				<div class=\"modal-dialog\">
+				<div class=\"modal-dialog  modal-xl\">
 					<div class=\"modal-content\">
 					<div class=\"modal-header\">
 						<h5 class=\"modal-title\" id=\"exampleModalLabel\">New Publication</h5>
@@ -64,7 +64,7 @@
 			
 			
 				<div class=\"modal fade\" id=\"modifModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-				<div class=\"modal-dialog\">
+				<div class=\"modal-dialog  modal-xl\">
 					<div class=\"modal-content\">
 						<div class=\"modal-header\">
 							<h5 class=\"modal-title\" id=\"modifModalLabel\">Modify Publication</h5>
@@ -123,7 +123,7 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 92%; margin-top: 100px,\">");
+		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 73%; margin-top: 100px,\">");
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
 		}

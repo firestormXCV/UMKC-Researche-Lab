@@ -3,7 +3,7 @@
 function displayAll() {
     $msg ='sqalala';
 	
-    require("./modele/articleBD.php");
+    require("./model/articleBD.php");
     if(displayArticle($articles)){
 		$_SESSION['articles'] = $articles;
         $_SESSION['articles'] = sort_Articles_date($articles);	

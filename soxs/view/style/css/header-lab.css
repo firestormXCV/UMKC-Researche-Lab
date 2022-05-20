@@ -1,0 +1,118 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color:#f3f9f9 !important;
+    font-size: 13 !important;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+  }
+
+  li {
+    line-height: 1.3  ;
+  }
+  ul .news{
+    line-height: 2.2 ;
+  }
+
+  .home {
+    line-height: 0.3;
+  }
+  
+  .topnav {
+    padding-left: 9%;
+    padding-right: 9%;
+    background:white;
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+    border-width: 10em !important ;
+    border-color: black !important;
+  }
+  
+  .topnav a {
+    float: right;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px;
+    text-decoration: none;
+    font-size: 17px;
+    margin-inline: 20px;
+    font-family: sans-serif;
+  }
+
+  .topnav a:hover {
+    background-color: rgb(215, 210, 210);
+    border-radius: 20%;
+  }
+
+  .topnav .active {
+    background-color: rgb(215, 210, 210);
+    border-radius: 20%;
+  }
+
+  .drop a {   
+    padding: 0px;
+    margin-inline: 0px;
+  }
+
+  .drop a:hover {   
+    border-radius: 10%;
+  }
+
+.pubArray {
+  margin-top: 100px !important;
+  margin-bottom: 20px !important;
+  background-color:white;
+  border-radius: 2%;
+}
+
+.pubArray table{
+  margin-left: 20px;
+  margin-left: 10px ;
+}
+
+.table>:not(caption)>*>* {
+    border-bottom-width: 0px !important ;
+}
+
+.space {
+  padding: 0 !important;
+  line-height: 0.1 !important;
+  
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #6ba1d6; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 30px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+  border-width: 1em;
+  border-color: white;
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.homeTitle {
+  background-color: #dcf3f3 !important;
+  padding: 5;
+}
+
+.homeNews {
+  background: white;
+  height: 110px;
+}
+
+p, li, ul {
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+}

@@ -16,25 +16,28 @@ body {
   }
 
   .home {
-    line-height: 0.3;
+    line-height: 0.8;
   }
   
   .topnav {
-    
+    padding-left: 9%;
+    padding-right: 9%;
     background:white;
     padding-bottom: 0 !important;
     padding-top: 0 !important;
-    
+    border-width: 10em !important ;
+    border-color: black !important;
   }
   
   .topnav a {
     float: right;
     color: #f2f2f2;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px;
     text-decoration: none;
     font-size: 17px;
-    margin-inline: 40px;
+    margin-inline: 20px;
+    font-family: sans-serif;
   }
 
   .topnav a:hover {
@@ -48,7 +51,7 @@ body {
   }
 
   .drop a {   
-    padding: 6px;
+    padding: 0px;
     margin-inline: 0px;
   }
 
@@ -57,7 +60,7 @@ body {
   }
 
 .pubArray {
-  margin-top: 120px !important;
+  margin-top: 100px !important;
   margin-bottom: 20px !important;
   background-color:white;
   border-radius: 2%;
@@ -101,7 +104,7 @@ body {
 }
 
 .homeTitle {
-  background-color: #006be651;
+  background-color: #dcf3f3;
   padding: 5;
 }
 

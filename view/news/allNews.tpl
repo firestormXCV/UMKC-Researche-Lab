@@ -19,7 +19,7 @@
 						<form action=\"controller/news.php\" method=\"post\" enctype=\"multipart/form-data\">
 						<div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">Title</label>
-								<input name=\"title\" required type=\"text\" class=\"form-control\" id=\"recipient-name\">
+								
 						</div>
 						
 						<div class=\"mb-3\">
@@ -85,7 +85,7 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 92%; margin-top: 100px,\">");
+		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 70%; margin-top: 100px,\">");
 
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
