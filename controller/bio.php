@@ -14,7 +14,7 @@ function personal() {
 	require ("./view/layout/layout.tpl"); //layout lançant le template de vue du service
 }
 
-$id=isset($_POST['idixi'])?trim($_POST['idixi']):'';
+$id=isset($_POST['idix'])?trim($_POST['idix']):'';
 $content=isset($_POST['content'])?trim($_POST['content']):'';
 var_dump($id);
 

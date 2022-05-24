@@ -7,29 +7,39 @@
             
             $admin = $_SESSION["adminBio"];
 
-            echo("<div class=\"modal fade\" id=\"jsonModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-            <div class=\"modal-dialog modal-xl\">
-                <div class=\"modal-content\">
-                <div class=\"modal-header\">
-                    <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modify Bio</h5>
-                    <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+            if(isset($_SESSION['profil'])) {
+                echo("<div class=\"modal fade\" id=\"ServicesModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+                <div class=\"modal-dialog modal-xl\">
+                    <div class=\"modal-content\">
+                    <div class=\"modal-header\">
+                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modify Personal</h5>
+                        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+                    </div>
+                    <div class=\"modal-body\">
+                        <form action=\"controller/home.php\" method=\"post\" enctype=\"multipart/form-data\">
+                        <input type=\"hidden\" id=\"recipient-id\" name=\"idixi\" value=\"". $_SESSION['content'][3]['id'] ."\">
+                            <button id=\"addLink\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Link</button>
+                            <button id=\"addList\" type=\"button\" class=\"btn btn-info btn-sm\" >Add List</button>
+                            <button id=\"addTitle\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Title</button>
+        
+                            <div class=\"mb-3\">
+                                <label for=\"message-text\" class=\"col-form-label\">Content:</label>
+                                <textarea name=\"content\"  rows=\"20\" cols=\"90\" class=\"form-control\" id=\"message-text\" value=\"\"></textarea>
+                                
+                            </div>
+                            <div class=\"d-flex justify-content-between mt-2\">
+                                    <button type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Start Upload\">Modify</button>
+                                    <button type=\"button\" class=\"btn btn-secondary flex-directi\" data-bs-dismiss=\"modal\">Cancel</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    
+                    </div>
                 </div>
-                <div class=\"modal-body\">
-                    <form action=\"controller/updateBio.php\" method=\"post\" enctype=\"multipart/form-data\">
-                        <div class=\"mb-3\">
-                            <label for=\"message-text\" class=\"col-form-label\">Message:</label>
-                            <textarea name=\"bio\"  rows=\"20\" cols=\"90\" value=\"\" class=\"form-control\" id=\"JsonContent\"></textarea>
-                        </div>
-                        <div class=\"d-flex justify-content-between mt-2\">
-								<button type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Start Upload\">Modify</button>
-								<button type=\"button\" class=\"btn btn-secondary flex-directi\" data-bs-dismiss=\"modal\">Cancel</button>
-						</div>
-                    </form>
-                </div>
-                
-                </div>
-            </div>
-            </div>");
+                </div>");
+                echo("<button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Bio</button>");
+            }
 
                 echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
 											
@@ -53,9 +63,15 @@
                 </div>
                         
               </div>");
-              
-            foreach($admin["content"] as $content) {
 
+              echo("<div class=\"\">
+                    
+                    ". ($_SESSION['content'][3]['content']) ."
+                </div>");
+
+            /*foreach($admin["content"] as $content) {
+
+                
 
                   echo("<h5 class=\"homeTitle\">" . $content["title"]. " ");
                   if(isset($_SESSION['profil'])) {
@@ -76,7 +92,7 @@
                 } else {
                     echo("<p class=\"ms-3\">". $content["content"][0] . "</p>");
                 }                
-            }
+            }*/
             ?>
         </div>
         <div class="d-flex flex-column w-100 pe-5">
