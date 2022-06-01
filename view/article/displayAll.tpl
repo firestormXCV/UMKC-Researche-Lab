@@ -123,14 +123,15 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 73%; margin-top: 100px,\">");
+		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  >");
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
 		}
 		
 		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">Publication</h2>");
 
-		echo("<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
+		echo("<div class=\"mx-5\">
+			<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
 		
 		foreach($_SESSION['articles'] as $article) {
 
@@ -148,7 +149,7 @@
 			
 				<li>");
 				if (!isset($_SESSION['profil'])) {
-					echo("<div class=\"py-2\">");
+					echo("<div class=\"py-1\">");
 				}
 					echo(" ". $article['autor'] ." \" <a href=\"ressources/publication/" .
 					$article['fileName'] ."\" target=\"_blank\"> ". $article['title'] ." </a> \" "
@@ -180,4 +181,5 @@
 
 </tbody>
 </table>
+</div>
 </div>

@@ -33,7 +33,7 @@ echo("
 </div>
 </div>");
 
-echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  style=\" width: 70%; margin-top: 100px,\">");
+echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  >");
 
 if(isset($_SESSION['profil'])) {
     echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Picture</button>");
@@ -118,6 +118,7 @@ function beliefmedia_grid_gallery($dir = 'ressources/gallery', $columns = '5', $
   /* Scan all images in the image directory */
   $image_array = glob(rtrim($dir, '/') . '/*.{jpg,jpeg,png,gif}', GLOB_BRACE);
   $return = '';
+  echo("<div class=\"mx-4\">");
   foreach ($_SESSION['pictures'] AS $image) {
     
     $return .= '<div class="bm-grid-item-' . $transient . '"><img class="bm-grid-img-' . $transient . '" src="ressources/gallery/' . $image['namePicture'] . '"><p>'. $image['caption'].'</p></div>';
@@ -127,6 +128,7 @@ $return = '<div class="bm-grid-' . $transient . '">' . $style . $return . '</div
 }
 
 echo beliefmedia_grid_gallery();
-echo("</div>");
+echo("</div>
+</div>");
 
 ?>

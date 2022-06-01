@@ -1,4 +1,4 @@
-<div class="pubArray d-flex flex-column justify-content-center mx-auto py-5"  style=" width: 73%; margin-top: 100px; margin-bottom: 50px">
+<div class="pubArray d-flex flex-column justify-content-center mx-auto">
     
     <h2 class="my-4 ms-5 border-bottom border-dark w-25 pb-3 ">Teaching</h2>
 
@@ -40,7 +40,7 @@
 		echo("<button onclick=\"modifyContent(".  $_SESSION['content'][0]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#TeachingModal\" >Update Services</button>");
 	}
 
-    echo("<div>
+    echo("<div class=\"mx-5\">
             ". nl2br($_SESSION['content'][0]['content']) ."
         </div>");
 

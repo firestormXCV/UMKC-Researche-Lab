@@ -1,4 +1,4 @@
-<div class="pubArray d-flex flex-column justify-content-center mx-auto py-1"  style=" width: 70%; margin-top: 100px; margin-bottom: 50px">
+<div class="pubArray d-flex flex-column justify-content-center mx-auto py-1">
     <div class="d-flex flex-rom justify-content-evenly">
     <div class="d-flex flex-column w-100 ps-5">
             
@@ -33,7 +33,7 @@
 
                 echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
 											
-                    <div class=\"px-2 bd-highlight\">
+                    <div class=\"px-1 bd-highlight\">
                         <img src=\"./ressources/profilPicture/" . $admin['pictureName']. "\" alt=\"PP\" width=\"150\" height=\"150\"/>
                     </div>
             
@@ -124,8 +124,8 @@
                                 
                                 <td class=\"space\">
                                     <ul>
-                                        <li>". $news['date'] ." \" ". $news['title'] ." </a><br> " .
-                                        $news['content'] ."</li>
+                                    <li class=\"my-1\"><bold class=\"fw-bold \">". $news['date'] ."</bold> \" ". $news['title'] ." </a><br> " .
+                                    $news['content'] ."</li>
                                     </ul>
                                 <td>
                             </tr>");

@@ -1,18 +1,18 @@
-<div class="pubArray d-flex flex-column justify-content-center mx-auto py-1"  style=" width: 74%; margin-top: 100px; margin-bottom: 50px">
+<div class="pubArray d-flex flex-column justify-content-center mx-auto py-1"  >
     <div class="d-flex flex-rom justify-content-evenly">
     <div class="d-flex flex-column w-100 ps-5">
             
             <?php
             
             
-            $admin = $_SESSION["adminBio"];
+            $admin = $_SESSION["bio"];
 
             if(isset($_SESSION['profil'])) {
                 echo("<div class=\"modal fade\" id=\"ServicesModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
                 <div class=\"modal-dialog modal-xl\">
                     <div class=\"modal-content\">
                     <div class=\"modal-header\">
-                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modify Personal</h5>
+                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Modify Content</h5>
                         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
                     </div>
                     <div class=\"modal-body\">
@@ -37,34 +37,95 @@
                     
                     </div>
                 </div>
-                </div>");
-                echo("<button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Bio</button>");
+                </div>
+                <div class=\"modal fade\" id=\"modifBio\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+				<div class=\"modal-dialog  modal-xl\">
+					<div class=\"modal-content\">
+						<div class=\"modal-header\">
+							<h5 class=\"modal-title\" id=\"modifModalLabel\">Modify Publication</h5>
+							<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+						</div>
+					<div class=\"modal-body\">
+						<form action=\"controller/modifyArticle.php\" method=\"post\" enctype=\"multipart/form-data\">
+							<input type=\"hidden\" id=\"recipient-id-modify\" name=\"id\" value=\"\">
+							<div class=\"mb-3\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Title</label>
+								<input name=\"title\" value=\"\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
+							</div>
+							<div class=\"mb-3\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Autor</label>
+								<input name=\"autor\" required type=\"text\" class=\"form-control\" id=\"recipient-autor-modify\">
+							</div>
+							<div class=\"mb-3\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Bibtex</label>
+								<textarea name=\"bibtex\" class=\"form-control\" id=\"recipient-bibtex-modify\"></textarea>
+
+							</div>
+							<div class=\"mb-3\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Type</label>
+								<select class=\"form-select\" id=\"recipient-type-modify\" name=\"type\" aria-label=\"Type of publication\">
+									<option selected>-- Select Type --</option>
+									<option value=\"book\">Book</option>
+									<option value=\"book chapter\">Book chapter</option>
+									<option value=\"conference\">Conference</option>
+									<option value=\"report\">Report</option>
+									<option value=\"archive\">Archive</option>
+									<option value=\"new paper\">News paper</option>
+								</select>
+							</div>
+							<div class=\"mb-3\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Place</label>
+								<input name=\"place\" required type=\"text\" class=\"form-control\" id=\"recipient-place-modify\">
+							</div>
+							<div class=\"mb-3\">
+								<label for=\"message-text\" class=\"col-form-label\">Date</label>
+								<input name=\"date\" required type=\"date\" class=\"form-control\" id=\"recipient-date-modify\">
+							</div>
+							<div class=\"mb-3\">
+								<input type=\"file\" name=\"the_file\" id=\"fileToUpload\">
+								
+							</div>
+							<div class=\"d-flex justify-content-between mt-2\">
+								<button type=\"submit\" name=\"submit\" class=\"btn btn-primary\" value=\"Start Upload\">Modify</button>
+								<button type=\"button\" class=\"btn btn-secondary flex-directi\" data-bs-dismiss=\"modal\">Cancel</button>
+							</div>
+						</form>
+					</div>
+					
+					</div>
+				</div>
+				</div>");
+                echo("<div>
+                        <button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Bio</button>
+                        <button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#modifBio\" >Update Profile</button>
+                      </div>");
             }
 
                 echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
 											
                     <div class=\"px-2 bd-highlight\">
-                        <img src=\"./ressources/profilPicture/" . $admin['pictureName']. "\" alt=\"PP\" width=\"150\" height=\"150\"/>
+                        <img src=\"./ressources/profilPicture/" . $admin[0]['pictureName']. "\" alt=\"PP\" width=\"150\" height=\"150\"/>
                     </div>
             
                     <div class=\" d-flex flex-column flex-fill\">
-                        <p class=\"openSans\">   <bold class=\"fw-bold\">   ". $admin['firstName'] ." ". $admin['lastName'] ."</bold></p>
+                        <p class=\"openSans\">   <bold class=\"fw-bold\">   ". $admin[0]['name'] ."</bold></p>
                         <ul>");
-
-                foreach($admin["title"] as $title) {
+                $res = explode(',', $admin[0]['title']);
+                
+                foreach($res as $title) {
                     echo("<li>" . $title ." </li>");
                 }
                 
                 echo("</ul>
-                        <p>   <bold class=\"fw-bold \">Contact: </bold>".  $admin['eMail'] ."</p>
-                        <a href=\"ressources/". $admin["CV"]  ."\" target=\"_blank\"> Here is my CV </a>
+                        <p>   <bold class=\"fw-bold \">Contact: </bold>".  $admin[0]['contact'] ."</p>
+                        <a href=\"ressources/". $admin[0]["cv"]  ."\" target=\"_blank\"> Here is my CV </a>
                         
                                                    
                 </div>
                         
               </div>");
 
-              echo("<div class=\"\">
+              echo("<div class=\"mx-1\">
                     
                     ". ($_SESSION['content'][3]['content']) ."
                 </div>");
@@ -95,7 +156,7 @@
             }*/
             ?>
         </div>
-        <div class="d-flex flex-column w-100 pe-5">
+        <div class="d-flex flex-column w-100 pe-4">
             
             <div class="d-flex flex-column mb-5">
                 <h5 class="homeTitle flex-fill">Last News</h5>
@@ -139,7 +200,7 @@
                                 
                                 <td class=\"space\">
                                     <ul>
-                                        <li>". $news['date'] ." \" ". $news['title'] ." </a><br> " .
+                                        <li class=\"my-1\"><bold class=\"fw-bold \">". $news['date'] ."</bold> \" ". $news['title'] ." </a><br> " .
                                         $news['content'] ."</li>
                                     </ul>
                                 <td>

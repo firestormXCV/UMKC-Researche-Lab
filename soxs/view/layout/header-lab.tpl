@@ -1,9 +1,6 @@
 
     <nav class="navbar navbar-expand-xl navbar-light bg-light topnav fixed-top text-center">
         <div class="container-fluid topnav mx-5 px-5 ">
-            <a href="index.php?controle=homeLab&action=homeLab" class="navbar-brand logo">
-                <img src="ressources/assets/UMKC_logo_bleu.png" height="55" alt="Logo-UMKC">
-            </a>
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
             </button>

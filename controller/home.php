@@ -2,15 +2,16 @@
 
 function home() {
 	
-	$json = file_get_contents('ressources/Bio.json');
-  
-	// Decode the JSON file
-	$json_data = json_decode($json,true);
-	  
-	// Display data
 
-	$_SESSION['adminBio'] = $json_data;
 	
+	require("./model/adminBD.php");
+	if(displayBio($bio)) {
+		$_SESSION['bio'] = $bio;
+	} else {
+		$msg='No bio for the moment ! Please try later bro';
+	}
+
+
 	require("./model/newsBD.php");
     if(displayNews($news)){
 		$_SESSION['news'] = $news;
@@ -27,7 +28,7 @@ function home() {
         
 	}
 	else{
-		$msg='No article for the moment ! Please try later bro';
+		$msg='No content for the moment ! Please try later bro';
 	}
 
 	

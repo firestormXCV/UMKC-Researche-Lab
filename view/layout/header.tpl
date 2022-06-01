@@ -1,6 +1,6 @@
 
     <nav class="navbar navbar-expand-xl navbar-light bg-light topnav fixed-top">
-        <div class="container-fluid topnav mx-5 px-5 py-3">
+        <div class="container-fluid topnav mx-5 px-5 py-1">
 
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
                 <span class="navbar-toggler-icon"></span>
