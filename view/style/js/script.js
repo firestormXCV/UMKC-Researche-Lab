@@ -29,7 +29,7 @@ function addListContent() {
 
 function addTitleContent() {
   let text = document.getElementById("message-text");
-  text.value += '<h5 class="homeTitle" >Your title text here</h5>'
+  text.value += '<h5 class="hometitle" >Your title text here</h5>'
 }  
 
 function modify(id) {

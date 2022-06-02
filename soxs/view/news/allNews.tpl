@@ -110,10 +110,11 @@
 
 			echo("
 						
-				<li class=\"news\">". $news['date'] ." <bold class=\"fw-bold \">". $news['title'] .": </bold> </a> " .
+				<li class=\"news\">". $news['date'] ." <bold class=\"fw-bold newsBold\">". $news['title'] .": </bold> </a> " .
 				$news['content']);
 				if (isset($_SESSION['profil'])) {
-					echo("<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
+					echo("
+					<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
 						<button id=\"delete\" onclick=\" deleteArticle(".  $news['id'] .", 'news');\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
 				}
 				echo("</li>");

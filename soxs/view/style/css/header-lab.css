@@ -7,17 +7,12 @@ body {
     background-attachment: fixed;
   }
 
-  h5 .fw-bold {
-    font-size: 13px !important;
-    margin: 5 0 5 0 !important;
-  }
-
   .fw-bold {
-    font-size: 13px !important;
+    font-size: 12px !important;
   }
 
   li {
-    line-height: 1.1 !important	  ;
+    line-height: 1.1;
   }
 
   ul .news{
@@ -32,8 +27,8 @@ body {
     padding-left: 9%;
     padding-right: 9%;
     background:white;
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
+    padding-bottom: 10 !important;
+    padding-top: 10 !important;
     border-width: 10em !important ;
     border-color: black !important;
   }
@@ -42,9 +37,9 @@ body {
     float: right;
     color: #f2f2f2;
     text-align: center;
-    padding: 7px;
+    padding: 5px;
     text-decoration: none;
-    font-size: 14px;
+    font-size: 12px;
     margin-inline: 20px;
     font-family: sans-serif;
   }
@@ -73,7 +68,7 @@ body {
   margin-bottom: 20px !important;
   background-color:white;
   border-radius: 2%;
-  width: 73%;
+  width: 73.5%;
   margin-top: 40px;
   margin-bottom: 50px;
 }
@@ -108,7 +103,7 @@ body {
   border-radius: 30px; /* Rounded corners */
   font-size: 18px; /* Increase font size */
   border-width: 1em;
-  border-color: white;
+  
 }
 
 #myBtn:hover {
@@ -116,8 +111,8 @@ body {
 }
 
 .homeTitle {
-  background-color: white !important;
- 
+  background-color: white;
+  color: black !important;
 }
 
 .homeNews {
@@ -131,7 +126,28 @@ p, li, ul {
   list-style-type: none;
 }
 
+
+
+.teams p {
+  line-height: 1.2 !important;
+  margin-bottom: 0 !important;
+}
+
+.teams img {
+  
+  margin: 0 !important;
+}
+
 ul {
   padding-left: 0 !important;
   margin-bottom: 0 !important;
+}
+
+/*.newsBold {
+  font-size: 11 !important;
+}*/
+
+h5 {
+  color:black !important;
+  font-size: 12 !important;
 }

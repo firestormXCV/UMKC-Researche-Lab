@@ -103,7 +103,7 @@
 
                 echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
 											
-                    <div class=\"px-2 bd-highlight\">
+                    <div class=\"pe-2 bd-highlight\">
                         <img src=\"./ressources/profilPicture/" . $admin[0]['pictureName']. "\" alt=\"PP\" width=\"150\" height=\"150\"/>
                     </div>
             
@@ -117,7 +117,7 @@
                 }
                 
                 echo("</ul>
-                        <p>   <bold class=\"fw-bold \">Contact: </bold>".  $admin[0]['contact'] ."</p>
+                        <p>Contact: ".  $admin[0]['contact'] ."</p>
                         <a href=\"ressources/". $admin[0]["cv"]  ."\" target=\"_blank\"> Here is my CV </a>
                         
                                                    
@@ -200,7 +200,7 @@
                                 
                                 <td class=\"space\">
                                     <ul>
-                                        <li class=\"my-1\"><bold class=\"fw-bold \">". $news['date'] ."</bold> \" ". $news['title'] ." </a><br> " .
+                                        <li class=\"my-1\">". $news['date'] ." ". $news['title'] ." </a><br> " .
                                         $news['content'] ."</li>
                                     </ul>
                                 <td>

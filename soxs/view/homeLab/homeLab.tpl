@@ -47,7 +47,7 @@
                 }
                 
                 echo("</ul>
-                        <p>   <bold class=\"fw-bold \">Contact: </bold>".  $admin['eMail'] ."</p>
+                        <p> Contact:".  $admin['eMail'] ."</p>
                         <a href=\"ressources/". $admin["CV"]  ."\" target=\"_blank\"> Here is my CV </a>
                         
                                                    

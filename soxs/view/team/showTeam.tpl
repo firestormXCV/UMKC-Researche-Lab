@@ -148,7 +148,49 @@
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Team Member</button>");
 		}
 		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">Team</h2>");
+
+
+
+
+
 		echo("<div class=\"mx-5\">
+				<center>
+				<div class=\"container\">
+				<div class=\"row\">");
+		
+		
+		foreach($_SESSION['team'] as $team) {
+			if ($team['pictureName'] == "NULL") {
+				$team['pictureName'] = "nobody.jpg";
+			}
+			echo("
+			
+			<div class=\"col teams\">
+				<img class=\"m-3\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+				<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+				<p>   ".  $team['diploma'] ."</p>
+				<p>   ".  $team['startDate'] ."</p>
+				<p>   ".  $team['researchInterest'] ."</p>");
+				if ($team['email'] != 'NULL') {
+					echo("<p>   ".  $team['email'] ."</p>");
+				}
+				if ($team['homepage'] != 'NULL') {
+										
+					echo("<p>   
+										
+					<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+				}
+				if(isset($_SESSION['profil'])) {
+					echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+				}
+			echo("</div>
+			");
+		}
+
+
+		echo("</center>
+				</div>
+				</div>
 		<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
 
 		if (!$begin) {
