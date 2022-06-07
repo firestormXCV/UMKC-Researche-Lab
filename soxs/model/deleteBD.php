@@ -24,6 +24,6 @@ catch (PDOException $e) {
     die(); // On arrête tout
 }
 
-$nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=article&action=displayAll";
+$nexturl = "http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=article&action=displayAll";
 header ("Location:" . $nexturl);
 ?>

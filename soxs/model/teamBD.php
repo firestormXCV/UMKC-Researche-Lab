@@ -1,8 +1,5 @@
 <?php
 
-
-
-
     function displayTeam(&$team) {
         
         require("./model/connectBD.php");

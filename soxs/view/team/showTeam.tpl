@@ -28,6 +28,19 @@
 								<input name=\"lastName\" required type=\"text\" class=\"form-control\" id=\"recipient-name\">
 						</div>
 
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio1\" value=\"option1\">
+								<label class=\"form-check-label\" for=\"inlineRadio1\">PhD</label>
+						</div>
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio2\" value=\"option2\">
+								<label class=\"form-check-label\" for=\"inlineRadio2\">MSC</label>
+						</div>
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio3\" value=\"option3\">
+								<label class=\"form-check-label\" for=\"inlineRadio3\">BSC</label>
+						</div>
+
                         <div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">EMail</label>
 								<input name=\"eMail\"  type=\"text\" class=\"form-control\" id=\"recipient-name\">
@@ -94,6 +107,19 @@
 								<input name=\"lastName\" required type=\"text\" class=\"form-control\" id=\"recipient-lastName-modify\">
 						</div>
 
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio1\" value=\"option1\">
+								<label class=\"form-check-label\" for=\"inlineRadio1\">PhD</label>
+						</div>
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio2\" value=\"option2\">
+								<label class=\"form-check-label\" for=\"inlineRadio2\">MSC</label>
+						</div>
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio3\" value=\"option3\">
+								<label class=\"form-check-label\" for=\"inlineRadio3\">BSC</label>
+						</div>
+
                         <div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">EMail</label>
 								<input name=\"eMail\"  type=\"text\" class=\"form-control\" id=\"recipient-email-modify\">
@@ -147,170 +173,261 @@
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Team Member</button>");
 		}
-		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">Team</h2>");
-
-
-
-
-
+		
 		echo("<div class=\"mx-5\">
 				<center>
 				<div class=\"container\">
-				<div class=\"row\">");
+				<div class=\"row\">
+				<h2>Me (PI)</h2>");
 		
+		$former = false;
 		
+		foreach($_SESSION['team'] as $team) {
+			if ($team['name'] == 'Farid' && $team['famillyName'] == 'Naït-Abdesselam') {
+				echo("
+			
+				<div class=\"col teams\">
+					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+					<p>	  ".  $team['grade'] ."</p> 
+					<p>   ".  $team['diploma'] ."</p>
+					<p>   ".  $team['startDate'] ."</p>
+					
+					<p>   ".  $team['researchInterest'] ."</p>");
+					if ($team['email'] != 'NULL') {
+						echo("<p>   ".  $team['email'] ."</p>");
+					}
+					if ($team['homepage'] != 'NULL') {
+											
+						echo("<p>   
+											
+						<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+					}
+					if(isset($_SESSION['profil'])) {
+						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+					}
+				echo("</div>
+				");
+			}
+		}
+
+		echo("<h2>Current Member</h2>");
+		echo("<h5>PhD</h5>");
 		foreach($_SESSION['team'] as $team) {
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
 			}
+			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'PhD') {
 			echo("
 			
-			<div class=\"col teams\">
-				<img class=\"m-3\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
-				<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
-				<p>   ".  $team['diploma'] ."</p>
-				<p>   ".  $team['startDate'] ."</p>
-				<p>   ".  $team['researchInterest'] ."</p>");
-				if ($team['email'] != 'NULL') {
-					echo("<p>   ".  $team['email'] ."</p>");
-				}
-				if ($team['homepage'] != 'NULL') {
-										
-					echo("<p>   
-										
-					<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
-				}
-				if(isset($_SESSION['profil'])) {
-					echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
-				}
-			echo("</div>
-			");
+				<div class=\"col teams\">
+					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+					<p>	  ".  $team['grade'] ."</p> 
+					<p>   ".  $team['diploma'] ."</p>
+					<p>   ".  $team['startDate'] ."</p>					
+					<p>   ".  $team['researchInterest'] ."</p>");
+
+					if ($team['email'] != 'NULL') {
+						echo("<p>   ".  $team['email'] ."</p>");
+					}
+					if ($team['homepage'] != 'NULL') {
+											
+						echo("<p>   
+											
+						<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+					}
+					if(isset($_SESSION['profil'])) {
+						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+					}
+				echo("</div>
+				");
+			} else {
+				$former = true;
+			}
 		}
-
-
-		echo("</center>
-				</div>
-				</div>
-		<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
-
-		if (!$begin) {
-			echo("</tbody>");
-		} else {
-			$begin = false;
-		}
-		echo("<thead class=\"border border-white\">
-				<tr>
-					<th class=\" homeTitle \" scope=\"col\">Current Member</th>
-					<th class=\"homeTitle\" scope=\"col\"></th>
-					
-					
-				</tr>
-			</thead>
-			<tbody>");
-		$former = false;
+		echo("<h5>MSC</h5>");
 		foreach($_SESSION['team'] as $team) {
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
 			}
-			if ($team['endDate'] == "0000-00-00") {
-				echo("	
-					<tr>				
-						<td>
-							<ul>
-								<div class=\" d-flex flex-rom space\">
-											
-									<div class=\"p-2 bd-highlight\">
-										<img src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"200\" height=\"200\"/>
-									</div>
-
-									<div class=\" d-flex flex-column \">
-										<p>   <bold class=\"fw-bold space\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
-										<p>   <bold class=\"fw-bold space\">Diploma: </bold>".  $team['diploma'] ."</p>
-										<p>   <bold class=\"fw-bold space\">Date: </bold>".  $team['startDate'] ."</p>
-										<p>   <bold class=\"fw-bold space\">Research Interest: </bold>".  $team['researchInterest'] ."</p>");
-										if ($team['email'] != 'NULL') {
-											echo("<p>   <bold class=\"fw-bold space\">EMail: </bold>".  $team['email'] ."</p>");
-										}
-										if ($team['homepage'] != 'NULL') {
-											
-											echo("<p>   <bold class=\"fw-bold space\">Homepage: </bold> 
-											<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
-										}
-										if(isset($_SESSION['profil'])) {
-											echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
-										}
-										
-									echo("
-									</div>
+			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'MSC') {
+			echo("
 			
-								</div>
-							</ul>
-						<td>
-					</tr>");
+				<div class=\"col teams\">
+					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+					<p>	  ".  $team['grade'] ."</p> 
+					<p>   ".  $team['diploma'] ."</p>
+					<p>   ".  $team['startDate'] ."</p>
+					
+					<p>   ".  $team['researchInterest'] ."</p>");
+					if ($team['email'] != 'NULL') {
+						echo("<p>   ".  $team['email'] ."</p>");
+					}
+					if ($team['homepage'] != 'NULL') {
+											
+						echo("<p>   
+											
+						<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+					}
+					if(isset($_SESSION['profil'])) {
+						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+					}
+				echo("</div>
+				");
+			} else {
+				$former = true;
+			}
+		}
+		echo("<h5>BSC</h5>");
+		foreach($_SESSION['team'] as $team) {
+			if ($team['pictureName'] == "NULL") {
+				$team['pictureName'] = "nobody.jpg";
+			}
+			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'BSC') {
+			echo("
+			
+				<div class=\"col teams\">
+					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+					<p>	  ".  $team['grade'] ."</p> 
+					<p>   ".  $team['diploma'] ."</p>
+					<p>   ".  $team['startDate'] ."</p>
+					
+					<p>   ".  $team['researchInterest'] ."</p>");
+					if ($team['email'] != 'NULL') {
+						echo("<p>   ".  $team['email'] ."</p>");
+					}
+					if ($team['homepage'] != 'NULL') {
+											
+						echo("<p>   
+											
+						<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+					}
+					if(isset($_SESSION['profil'])) {
+						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+					}
+				echo("</div>
+				");
 			} else {
 				$former = true;
 			}
 		}
 
 		if ($former) {
-			echo("<thead class=\"border border-white\">
-					<tr>
-						<th class=\"homeTitle\" scope=\"col\">Former Member</th>
-						<th class=\"homeTitle\" scope=\"col\"></th>
-						
-						
-					</tr>
-				</thead>");
+			echo("<h2>Former Member</h2>");
+
+		echo("<h5>PhD</h5>");
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
 				}
-
+				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'PhD') {
+				echo("
 				
-
-				if ($team['endDate'] != "0000-00-00") {
-					echo("	
-						<tr>				
-							<td>
-								<ul>
-									<div class=\" d-flex flex-rom space\">
-										
-										<div class=\"p-2 bd-highlight\">
-										<img src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"200\" height=\"200\"/>
-										</div>
-
-										<div class=\" d-flex flex-column \">
-											<p>   <bold class=\"fw-bold space\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
-											<p>   <bold class=\"fw-bold space\">Diploma: </bold>".  $team['diploma'] ."</p>
-											<p>   <bold class=\"fw-bold space\">Date: </bold>".  $team['startDate'] ."   to   ". $team['endDate'] ."</p>
-											<p>   <bold class=\"fw-bold space\">Research Interest: </bold>".  $team['researchInterest'] ."</p>");
-											if ($team['email'] != 'NULL') {
-												echo("<p>   <bold class=\"fw-bold space\">EMail: </bold>".  $team['email'] ."</p>");
-											}
-											if ($team['homepage'] != 'NULL') {
-												echo("<p>   <bold class=\"fw-bold space\">Homepage: </bold> 
-											<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
-											}
-											if(isset($_SESSION['profil'])) {
-												echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
-											}
-										echo("
-										</div>
-					
-									</div>
-								</ul>
-							<td>
-						</tr>");
-				} 
+					<div class=\"col teams\">
+						<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+						<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+						<p>	  ".  $team['grade'] ."</p> 
+						<p>   ".  $team['diploma'] ."</p>
+						<p>   ".  $team['startDate'] ."</p>					
+						<p>   ".  $team['researchInterest'] ."</p>");
+						
+						if ($team['email'] != 'NULL') {
+							echo("<p>   ".  $team['email'] ."</p>");
+						}
+						if ($team['homepage'] != 'NULL') {
+												
+							echo("<p>   
+												
+							<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+						}
+						if(isset($_SESSION['profil'])) {
+							echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+						}
+					echo("</div>
+					");
+				} else {
+					$former = true;
+				}
 			}
+			echo("<h5>MSC</h5>");
+			foreach($_SESSION['team'] as $team) {
+				if ($team['pictureName'] == "NULL") {
+					$team['pictureName'] = "nobody.jpg";
+				}
+				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'MSC') {
+				echo("
+				
+					<div class=\"col teams\">
+						<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+						<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+						<p>	  ".  $team['grade'] ."</p> 
+						<p>   ".  $team['diploma'] ."</p>
+						<p>   ".  $team['startDate'] ."</p>
+						
+						<p>   ".  $team['researchInterest'] ."</p>");
+						if ($team['email'] != 'NULL') {
+							echo("<p>   ".  $team['email'] ."</p>");
+						}
+						if ($team['homepage'] != 'NULL') {
+												
+							echo("<p>   
+												
+							<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+						}
+						if(isset($_SESSION['profil'])) {
+							echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+						}
+					echo("</div>
+					");
+				} else {
+					$former = true;
+				}
+			}
+			echo("<h5>BSC</h5>");
+			foreach($_SESSION['team'] as $team) {
+				if ($team['pictureName'] == "NULL") {
+					$team['pictureName'] = "nobody.jpg";
+				}
+				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'BSC') {
+				echo("
+				
+					<div class=\"col teams\">
+						<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
+						<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
+						<p>	  ".  $team['grade'] ."</p> 
+						<p>   ".  $team['diploma'] ."</p>
+						<p>   ".  $team['startDate'] ."</p>
+						
+						<p>   ".  $team['researchInterest'] ."</p>");
+						if ($team['email'] != 'NULL') {
+							echo("<p>   ".  $team['email'] ."</p>");
+						}
+						if ($team['homepage'] != 'NULL') {
+												
+							echo("<p>   
+												
+							<a href=\"" . $team['homepage'] ."\" target=\"_blank\"> ".  $team['homepage'] ." </a>  </p>");
+						}
+						if(isset($_SESSION['profil'])) {
+							echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
+						}
+					echo("</div>
+					");
+				} else {
+					$former = true;
+				}
+			}		
 		}
+
+		echo("</center>
+				</div>
+				</div>");
 		
 		
-		echo("</tbody>
-		</table>
+		echo("
 		</div>
 		</div>");
-		//<img src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"200\" height=\"200\"
-		//							<li>". $team['name'] ." \" ". $team['famillyName'] ." </a> " .
-		//							$team['diploma'] ."  " . $team['endDate']  . "</li>
 	?>

@@ -1,13 +1,10 @@
-
-
-
 function initNews() {
 
     let newsAddButton = document.getElementById("newsAdd");
     let newsAddModifyButton = document.getElementById("newsAddModify");
 
 
-
+    
     mybutton = document.getElementById("myBtn");
 
     // When the user scrolls down 20px from the top of the document, show the button
@@ -18,6 +15,13 @@ function initNews() {
     
 }
 
+function updateHoverMenu(newId) {
+  
+  let actual = document.getElementsByClassName("active")[0];
+  actual.classList.remove('active');
+  newId.classList.add('active');
+
+}
 
 function addLinkNews() {
     console.log('lol')

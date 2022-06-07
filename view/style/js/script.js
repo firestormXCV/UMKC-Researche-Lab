@@ -18,18 +18,34 @@ function initNews() {
 
 
 function addListContent() {
-    let text = document.getElementById("message-text");
-    text.value += '<ul> <li>element 1</li> <li>element 2</li> <li>element 3</li></ul>'
+
+    var curPos = document.getElementById("message-text").selectionStart;
+    let x = $("#message-text").val();
+    let text_to_insert = $("#insert").val();
+    $("#message-text").val(
+    x.slice(0, curPos) + '<ul> <li>element 1</li> <li>element 2</li> <li>element 3</li></ul>' + x.slice(curPos));
+
  }
 
  function addLinkContent() {
-  let text = document.getElementById("message-text");
-  text.value += '<a href=Your Link" target="_blank">The text of the link</a>'
+
+  var curPos = document.getElementById("message-text").selectionStart;
+  let x = $("#message-text").val();
+  let text_to_insert = $("#insert").val();
+  $("#message-text").val(
+  x.slice(0, curPos) + '<a href=Your Link" target="_blank">The text of the link</a>' + x.slice(curPos));
+
 }  
 
 function addTitleContent() {
-  let text = document.getElementById("message-text");
-  text.value += '<h5 class="hometitle" >Your title text here</h5>'
+  
+  var curPos = document.getElementById("message-text").selectionStart;
+  let x = $("#message-text").val();
+  let text_to_insert = $("#insert").val();
+  $("#message-text").val(
+  x.slice(0, curPos) + '<h5 class="hometitle" >Your title text here</h5>' + x.slice(curPos));
+
+  //text.value += '<h5 class="hometitle" >Your title text here</h5>'
 }  
 
 function modify(id) {

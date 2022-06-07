@@ -91,7 +91,7 @@
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
 		}
 
-		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">News</h2>");
+		
 
 		echo("<div class=\"mx-5\">
 		<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
@@ -100,6 +100,8 @@
 
 			$date1 = strtotime($news['date']);
 			$date2 = strtotime($currentDate);
+			
+			$formatedDate = $date = date('m-d-Y', strtotime($news['date']));
 			
 			if (date("Y", $date1) < date("Y", $date2)) {
 				echo("</ul>");
@@ -110,14 +112,21 @@
 
 			echo("
 						
-				<li class=\"news\">". $news['date'] ." <bold class=\"fw-bold newsBold\">". $news['title'] .": </bold> </a> " .
-				$news['content']);
-				if (isset($_SESSION['profil'])) {
-					echo("
-					<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
-						<button id=\"delete\" onclick=\" deleteArticle(".  $news['id'] .", 'news');\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
-				}
-				echo("</li>");
+				<li class=\"news\">
+					<div class=\"d-flex bd-highlight flex-nowrap\">
+						<div class=\"p-2 bd-highlight text-nowrap\">
+						<p>". $formatedDate ."</p>
+						</div>
+						<div class=\"p-2 bd-highlight \">
+						<p>". $news['title'] .":" .
+					$news['content'] ."");
+					if (isset($_SESSION['profil'])) {
+						echo("
+						<button id=\"modifyNews\" onclick=\"modifyNews(".  $news['id'] .");\" type=\"button\" class=\"btn mx-auto\" data-bs-toggle=\"modal\" data-bs-target=\"#modifModal\" ><i class=\"bi bi-pencil\"></i></button>
+							<button id=\"delete\" onclick=\" deleteArticle(".  $news['id'] .", 'news');\" type=\"button\" class=\"btn\" ><i class=\"bi bi-trash\"></i></button>");
+					}
+				echo("</p></div></div>
+				</li>");
 				
 		}
 		echo("</ul></table></div>");

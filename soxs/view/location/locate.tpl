@@ -1,6 +1,5 @@
 <div class="pubArray d-flex flex-column justify-content-center mx-auto py-5" >
     
-    <h2 class="my-4 ms-5 border-bottom border-dark w-25 pb-3 ">Location</h2>
     <center>
         <iframe src="https://www.google.com/maps/embed/v1/place?key=AIzaSyA0s1a7phLN0iaD6-UE7m4qP-z21pH0eSc&q=UMKC&zoom=10" width="80%" height="500" frameborder="0" style="border:0" allowfullscreen></iframe>
     </center>

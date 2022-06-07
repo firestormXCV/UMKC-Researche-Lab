@@ -39,7 +39,7 @@
             
                     <div class=\" d-flex flex-column flex-fill\">
                         
-                        <p class=\"openSans\">   <bold class=\"fw-bold\">   ". $admin['firstName'] ." ". $admin['lastName'] ."</bold></p>
+                        <p class=\"openSans\"> ". $admin['firstName'] ." ". $admin['lastName'] ."</p>
                         <ul>");
 
                 foreach($admin["title"] as $title) {
@@ -90,7 +90,7 @@
                     $i = 0;
                     foreach($_SESSION['news'] as $news) {
                         $i++;
-                        if ($i>10) {
+                        if ($i>5) {
                             break;
                         }
                         $date1 = strtotime($news['date']);
@@ -124,7 +124,7 @@
                                 
                                 <td class=\"space\">
                                     <ul>
-                                    <li class=\"my-1\"><bold class=\"fw-bold \">". $news['date'] ."</bold> \" ". $news['title'] ." </a><br> " .
+                                    <li class=\"my-1\">". $news['date'] ." \" ". $news['title'] ." </a><br> " .
                                     $news['content'] ."</li>
                                     </ul>
                                 <td>

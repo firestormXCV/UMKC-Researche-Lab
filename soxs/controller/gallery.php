@@ -48,7 +48,7 @@
 
 		}
 		
-		$nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=gallery&action=showGallery";
+		$nexturl = "http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=gallery&action=showGallery";
 		header ("Location:" . $nexturl);
 	} 
 

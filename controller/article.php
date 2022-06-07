@@ -16,6 +16,7 @@ function displayAll() {
 }
 
 function date_compare($element1, $element2) {
+	
 	$datetime1 = strtotime($element1['date']);
 	$datetime2 = strtotime($element2['date']);
 	return $datetime2 - $datetime1;
@@ -23,6 +24,11 @@ function date_compare($element1, $element2) {
 
 function sort_Articles_date($array) {
 	usort($array, 'date_compare');
+
+	/*foreach($array as $date) {
+		$date = date('d-m-Y', strtotime($date_from_sql)); //date format
+	}*/
+
 	return $array;
 }
 

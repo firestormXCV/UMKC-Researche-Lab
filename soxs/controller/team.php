@@ -9,6 +9,7 @@ $diploma=isset($_POST['diploma'])?trim($_POST['diploma']):'';
 $researchInterest=isset($_POST['researchInterest'])?trim($_POST['researchInterest']):'';
 $startDate=isset($_POST['startDate'])?trim($_POST['startDate']):'';
 $endDate=(isset($_POST['endDate'])&&!empty($_POST['endDate']))?trim($_POST['endDate']):"0000-00-00";
+$grade=(isset($_POST['grade'])&&!empty($_POST['grade']))?trim($_POST['grade']):'';
 
 if (!empty($firstName)) {
     $currentDirectory = dirname (getcwd());
@@ -68,30 +69,31 @@ if (!empty($firstName)) {
     }
     require($currentDirectory . "/model/TeamBD.php");
 
-    addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $fullName);
+    addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $fullName, $grade);
     
-    $nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=team&action=showTeam";
-    
+    $nexturl = "http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=team&action=showTeam";
+
     header ("Location:" . $nexturl);
 
 }
 
+//Function to give the team member to the page ready to display.
 
 function showTeam() {
-    $msg ='sqalala';
-	
-    require("./model/teamBD.php");
     
-    if(displayTeam($team)){
+	
+    require("./model/teamBD.php");      //Call the data base for table team
+    
+    if(displayTeam($team)){             //Fetch team member array
         
-		$_SESSION['team'] = $team;
+		$_SESSION['team'] = $team;      //Give the array to the session variable (globale variable)
         
 	}
 	else{
-		$msg='No article for the moment ! Please try later bro';
+		$msg='No article for the moment ! Please try later';
 	}
 
-	require ("./view/layout/layout-lab.tpl"); //layout lançant le template de vue du service
+	require ("./view/layout/layout-lab.tpl"); //layout to start the template from the site (header, service, footer)
 }
 
 ?>

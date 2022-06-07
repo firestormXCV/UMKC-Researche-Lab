@@ -13,6 +13,6 @@ modifyNewsBD($title, $content, $date, $id);
         
 
 
-$nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=news&action=allNews";
+$nexturl = "http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=news&action=allNews";
 header ("Location:" . $nexturl);
 ?>

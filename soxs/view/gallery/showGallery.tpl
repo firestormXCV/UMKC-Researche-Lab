@@ -39,7 +39,7 @@ if(isset($_SESSION['profil'])) {
     echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Picture</button>");
 }
 
-echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">Gallery</h2>");
+
 
 function beliefmedia_grid_gallery($dir = 'ressources/gallery', $columns = '5', $url = false, $width = '450,560,960') {
   $width = explode(',', $width);

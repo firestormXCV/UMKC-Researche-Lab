@@ -1,6 +1,6 @@
-<div class="pubArray d-flex flex-column justify-content-center mx-auto">
+²<div class="pubArray d-flex flex-column justify-content-center mx-auto">
     
-    <h2 class="my-4 ms-5 border-bottom border-dark w-25 pb-3 ">Services</h2>
+    
 
     <?php
 

@@ -166,7 +166,7 @@
                     $i = 0;
                     foreach($_SESSION['news'] as $news) {
                         $i++;
-                        if ($i>10) {
+                        if ($i>5) {
                             break;
                         }
                         $date1 = strtotime($news['date']);
@@ -213,6 +213,7 @@
                     </table>
                     ");
                 ?>
+                <a href="http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=news&action=allNews">See more...</a>
                 <div class="me-4">
                     <a class="twitter-timeline" data-height="800" href="https://twitter.com/UMKC?ref_src=twsrc%5Etfw">Tweets by UMKC</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

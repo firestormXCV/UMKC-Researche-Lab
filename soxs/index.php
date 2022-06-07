@@ -8,7 +8,9 @@
         $controle = "homeLab";
         $action = "homeLab";
     }
-
+    
     require_once "./controller/$controle.php";
     $action();
+    
+    
 ?>

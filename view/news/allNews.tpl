@@ -91,7 +91,7 @@
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
 		}
 
-		echo("<h2 class=\"my-4 ms-5 border-bottom border-dark w-25 pb-3 \">News</h2>");
+		
 
 		echo("<table class=\"table mt-4 mx-auto rounded border border-white\" style=\" width: 99%;\">");
 		
