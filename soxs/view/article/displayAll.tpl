@@ -123,7 +123,7 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\" >");
+		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto ps-1\" >");
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
 		}
@@ -139,13 +139,13 @@
 			if (date("Y", $date1) < date("Y", $date2)) {
 				echo("</ul>");
 				$currentDate = $article['date'];
-				echo("<h5 class=\"homeTitle\" >". date("Y", $date1) ."</h5>");
+				echo("<h5 class=\"homeTitle pt-1\" >". date("Y", $date1) ."</h5>");
 				echo("<ul>");
 			}
 
 			echo("
 			
-				<li>");
+				<li class=\"news\">");
 				if (!isset($_SESSION['profil'])) {
 					echo("<div class=\"py-1\">");
 				}

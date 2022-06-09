@@ -15,10 +15,6 @@ body {
     line-height: 1.2;         /*space between all line in list (news, publication, home) */
   }
 
-  .news {
-    margin-bottom: 5 !important;  /*space between each news*/
-  }
-
   .home {
     line-height: 0.9;
   }
@@ -126,8 +122,6 @@ p, li, ul {
   list-style-type: none;
 }
 
-
-
 .teams p {
   line-height: 1.2 !important;
   margin-bottom: 0 !important;
@@ -150,4 +144,16 @@ ul {
 h5 {
   color:black !important;
   font-size: 12 !important;
+}
+
+.grid-container {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 140px));
+  max-width: 800px;
+}
+
+.grid-item p {
+  margin-bottom: 0 !important;
+  
 }

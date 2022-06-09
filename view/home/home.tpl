@@ -46,43 +46,28 @@
 							<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
 						</div>
 					<div class=\"modal-body\">
-						<form action=\"controller/modifyArticle.php\" method=\"post\" enctype=\"multipart/form-data\">
-							<input type=\"hidden\" id=\"recipient-id-modify\" name=\"id\" value=\"\">
+						<form action=\"controller/bio.php\" method=\"post\" enctype=\"multipart/form-data\">
+                            <input type=\"hidden\" id=\"recipient-id\" name=\"idixi\" value=\"1\">
+							<input type=\"hidden\" id=\"recipient-id-modify\" name=\"idif\" value=\"\">
 							<div class=\"mb-3\">
-								<label for=\"recipient-name\" class=\"col-form-label\">Title</label>
-								<input name=\"title\" value=\"\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
+								<label for=\"recipient-name\" class=\"col-form-label\">Name</label>
+								<input name=\"name\" value=\"\" required type=\"text\" class=\"form-control\" id=\"recipient-name-modify\">
 							</div>
 							<div class=\"mb-3\">
-								<label for=\"recipient-name\" class=\"col-form-label\">Autor</label>
-								<input name=\"autor\" required type=\"text\" class=\"form-control\" id=\"recipient-autor-modify\">
+								<label for=\"recipient-title\" class=\"col-form-label\">Title</label>
+								<input name=\"title\" required type=\"text\" class=\"form-control\" id=\"recipient-title-modify\">
 							</div>
 							<div class=\"mb-3\">
-								<label for=\"recipient-name\" class=\"col-form-label\">Bibtex</label>
-								<textarea name=\"bibtex\" class=\"form-control\" id=\"recipient-bibtex-modify\"></textarea>
+								<label for=\"recipient-contact\" class=\"col-form-label\">Contact</label>
+								<textarea name=\"contact\" class=\"form-control\" id=\"recipient-contact-modify\"></textarea>
 
 							</div>
 							<div class=\"mb-3\">
-								<label for=\"recipient-name\" class=\"col-form-label\">Type</label>
-								<select class=\"form-select\" id=\"recipient-type-modify\" name=\"type\" aria-label=\"Type of publication\">
-									<option selected>-- Select Type --</option>
-									<option value=\"book\">Book</option>
-									<option value=\"book chapter\">Book chapter</option>
-									<option value=\"conference\">Conference</option>
-									<option value=\"report\">Report</option>
-									<option value=\"archive\">Archive</option>
-									<option value=\"new paper\">News paper</option>
-								</select>
+								<input type=\"file\" name=\"the_file\" id=\"fileToUploadPic\">
+								
 							</div>
-							<div class=\"mb-3\">
-								<label for=\"recipient-name\" class=\"col-form-label\">Place</label>
-								<input name=\"place\" required type=\"text\" class=\"form-control\" id=\"recipient-place-modify\">
-							</div>
-							<div class=\"mb-3\">
-								<label for=\"message-text\" class=\"col-form-label\">Date</label>
-								<input name=\"date\" required type=\"date\" class=\"form-control\" id=\"recipient-date-modify\">
-							</div>
-							<div class=\"mb-3\">
-								<input type=\"file\" name=\"the_file\" id=\"fileToUpload\">
+                            <div class=\"mb-3\">
+								<input type=\"file\" name=\"the_file\" id=\"fileToUploadCV\">
 								
 							</div>
 							<div class=\"d-flex justify-content-between mt-2\">

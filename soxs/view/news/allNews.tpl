@@ -85,7 +85,7 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\" >");
+		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto ps-1\" >");
 
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Publication</button>");
@@ -112,13 +112,13 @@
 
 			echo("
 						
-				<li class=\"news\">
+				<li>
 					<div class=\"d-flex bd-highlight flex-nowrap\">
-						<div class=\"p-2 bd-highlight text-nowrap\">
-						<p>". $formatedDate ."</p>
+						<div class=\"py-2 bd-highlight text-nowrap\">
+						<p style=\"margin-bottom: 0 !important;\">". $formatedDate ."</p>
 						</div>
-						<div class=\"p-2 bd-highlight \">
-						<p>". $news['title'] .":" .
+						<div class=\"py-2 bd-highlight \">
+						<p style=\"margin-bottom: 0 !important;\">: ". $news['title'] .":" .
 					$news['content'] ."");
 					if (isset($_SESSION['profil'])) {
 						echo("

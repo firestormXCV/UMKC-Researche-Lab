@@ -7,13 +7,13 @@ function initNews() {
     let addLink = document.getElementById("addLink");
     let addList = document.getElementById("addList");
     let addTitle = document.getElementById("addTitle");
-
+    let addBr = document.getElementById("addBr");
     // When the user scrolls down 20px from the top of the document, show the button
     window.onscroll = function() {scrollFunction()};
     addLink.addEventListener("click", addLinkContent);
     addList.addEventListener("click", addListContent);
     addTitle.addEventListener("click", addTitleContent);
-    
+    addBr.addEventListener("click", addBrContent);
 }
 
 
@@ -27,6 +27,16 @@ function addListContent() {
 
  }
 
+ function addBrContent() {
+
+  var curPos = document.getElementById("message-text").selectionStart;
+  let x = $("#message-text").val();
+  let text_to_insert = $("#insert").val();
+  $("#message-text").val(
+  x.slice(0, curPos) + '<br>' + x.slice(curPos));
+
+}
+
  function addLinkContent() {
 
   var curPos = document.getElementById("message-text").selectionStart;
@@ -38,7 +48,6 @@ function addListContent() {
 }  
 
 function addTitleContent() {
-  
   var curPos = document.getElementById("message-text").selectionStart;
   let x = $("#message-text").val();
   let text_to_insert = $("#insert").val();

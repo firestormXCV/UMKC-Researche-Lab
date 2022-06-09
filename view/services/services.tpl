@@ -18,6 +18,7 @@
                     <button id=\"addLink\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Link</button>
                     <button id=\"addList\" type=\"button\" class=\"btn btn-info btn-sm\" >Add List</button>
                     <button id=\"addTitle\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Title</button>
+                    <button id=\"addBr\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Line break</button>
 
                     <div class=\"mb-3\">
                         <label for=\"message-text\" class=\"col-form-label\">Content:</label>

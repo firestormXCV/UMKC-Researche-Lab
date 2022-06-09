@@ -168,17 +168,15 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\" >");
+		echo("<div class=\"pubArray d-flex flex-column mx-auto ps-0\" >");
+		
 		
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Team Member</button>");
 		}
 		
 		echo("<div class=\"mx-5\">
-				<center>
-				<div class=\"container\">
-				<div class=\"row\">
-				<h2>Me (PI)</h2>");
+			<h2>Me (PI)</h2>");
 		
 		$former = false;
 		
@@ -186,7 +184,7 @@
 			if ($team['name'] == 'Farid' && $team['famillyName'] == 'Naït-Abdesselam') {
 				echo("
 			
-				<div class=\"col teams\">
+				<div class=\"teams\">
 					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 					<p>	  ".  $team['grade'] ."</p> 
@@ -210,9 +208,12 @@
 				");
 			}
 		}
+		
+		echo("<h5 class=\"mt-1\">Current Member</h5>");
 
-		echo("<h2>Current Member</h2>");
-		echo("<h5>PhD</h5>");
+		$count = 0;
+
+		echo("<div class=\"d-flex align-items-start grid-container\">");
 		foreach($_SESSION['team'] as $team) {
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
@@ -220,7 +221,7 @@
 			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'PhD') {
 			echo("
 			
-				<div class=\"col teams\">
+				<div class=\"grid-item\">
 					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 					<p>	  ".  $team['grade'] ."</p> 
@@ -246,7 +247,11 @@
 				$former = true;
 			}
 		}
-		echo("<h5>MSC</h5>");
+		echo("</div>");
+
+		$count = 0;
+		
+		echo("<div class=\"d-flex align-items-start grid-container\">");
 		foreach($_SESSION['team'] as $team) {
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
@@ -254,14 +259,14 @@
 			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'MSC') {
 			echo("
 			
-				<div class=\"col teams\">
+				<div class=\"grid-item\">
 					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 					<p>	  ".  $team['grade'] ."</p> 
 					<p>   ".  $team['diploma'] ."</p>
-					<p>   ".  $team['startDate'] ."</p>
-					
+					<p>   ".  $team['startDate'] ."</p>					
 					<p>   ".  $team['researchInterest'] ."</p>");
+
 					if ($team['email'] != 'NULL') {
 						echo("<p>   ".  $team['email'] ."</p>");
 					}
@@ -280,22 +285,34 @@
 				$former = true;
 			}
 		}
-		echo("<h5>BSC</h5>");
+		echo("</div>");
+		
+		$count = 0;
+		
 		foreach($_SESSION['team'] as $team) {
+			
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
 			}
 			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'BSC') {
-			echo("
+				if ($count == 0) {
+					echo("<div class=\"d-flex grid-container\">");
+				} else if ($count == 7){
+					echo("</div>
+						<div class=\"d-flex grid-container\">");
+						$count = 0;
+				}
+				$count++;
+				echo("
 			
-				<div class=\"col teams\">
+				<div class=\"grid-item\">
 					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 					<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 					<p>	  ".  $team['grade'] ."</p> 
 					<p>   ".  $team['diploma'] ."</p>
-					<p>   ".  $team['startDate'] ."</p>
-					
+					<p>   ".  $team['startDate'] ."</p>					
 					<p>   ".  $team['researchInterest'] ."</p>");
+
 					if ($team['email'] != 'NULL') {
 						echo("<p>   ".  $team['email'] ."</p>");
 					}
@@ -308,17 +325,20 @@
 					if(isset($_SESSION['profil'])) {
 						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
 					}
-				echo("</div>
-				");
+				echo("</div>");
 			} else {
 				$former = true;
 			}
+			
 		}
-
+		echo("</div>");
+		
 		if ($former) {
-			echo("<h2>Former Member</h2>");
+			echo("<h2>Alumni (Phd)</h2>");
 
-		echo("<h5>PhD</h5>");
+			$count = 0;
+
+			echo("<div class=\"d-flex align-items-start grid-container\">");
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
@@ -326,14 +346,14 @@
 				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'PhD') {
 				echo("
 				
-					<div class=\"col teams\">
+					<div class=\"grid-item\">
 						<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 						<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 						<p>	  ".  $team['grade'] ."</p> 
 						<p>   ".  $team['diploma'] ."</p>
 						<p>   ".  $team['startDate'] ."</p>					
 						<p>   ".  $team['researchInterest'] ."</p>");
-						
+
 						if ($team['email'] != 'NULL') {
 							echo("<p>   ".  $team['email'] ."</p>");
 						}
@@ -352,7 +372,13 @@
 					$former = true;
 				}
 			}
-			echo("<h5>MSC</h5>");
+			echo("</div>");
+
+			echo("<h2>Alumni (MSC)</h2>");
+
+			$count = 0;
+
+			echo("<div class=\"d-flex align-items-start grid-container\">");
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
@@ -360,14 +386,14 @@
 				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'MSC') {
 				echo("
 				
-					<div class=\"col teams\">
+					<div class=\"grid-item\">
 						<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 						<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 						<p>	  ".  $team['grade'] ."</p> 
 						<p>   ".  $team['diploma'] ."</p>
-						<p>   ".  $team['startDate'] ."</p>
-						
+						<p>   ".  $team['startDate'] ."</p>					
 						<p>   ".  $team['researchInterest'] ."</p>");
+
 						if ($team['email'] != 'NULL') {
 							echo("<p>   ".  $team['email'] ."</p>");
 						}
@@ -386,7 +412,11 @@
 					$former = true;
 				}
 			}
-			echo("<h5>BSC</h5>");
+			echo("</div>");
+
+			$count = 0;
+
+			echo("<div class=\"d-flex align-items-start grid-container\">");
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
@@ -394,14 +424,14 @@
 				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'BSC') {
 				echo("
 				
-					<div class=\"col teams\">
+					<div class=\"grid-item\">
 						<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
 						<p>   <bold class=\"fw-bold\">   ". $team['name'] ." ". $team['famillyName'] ."</bold></p>
 						<p>	  ".  $team['grade'] ."</p> 
 						<p>   ".  $team['diploma'] ."</p>
-						<p>   ".  $team['startDate'] ."</p>
-						
+						<p>   ".  $team['startDate'] ."</p>					
 						<p>   ".  $team['researchInterest'] ."</p>");
+
 						if ($team['email'] != 'NULL') {
 							echo("<p>   ".  $team['email'] ."</p>");
 						}
@@ -419,10 +449,11 @@
 				} else {
 					$former = true;
 				}
-			}		
+			}
+			echo("</div>");
 		}
 
-		echo("</center>
+		echo("
 				</div>
 				</div>");
 		

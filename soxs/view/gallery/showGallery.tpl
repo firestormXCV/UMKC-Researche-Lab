@@ -33,7 +33,7 @@ echo("
 </div>
 </div>");
 
-echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto\"  >");
+echo("<div class=\"pubArray d-flex flex-column justify-content-center mx-auto ps-3\"  >");
 
 if(isset($_SESSION['profil'])) {
     echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Picture</button>");

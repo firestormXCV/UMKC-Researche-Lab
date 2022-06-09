@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse " id="navbarCollapse">
                 <div class="navbar-nav ">
                     <a href="index.php?controle=homeLab&action=homeLab" class="nav-item active nav-link text-dark border border-dark rounded px-3" id="homeLab">Home</a>
-                    <a class="text-dark border border-dark rounded px-3" href="index.php?controle=team&action=showTeam" id="showTeam">Team</a>
+                    <a class="text-dark border border-dark rounded px-3" href="index.php?controle=team&action=showTeam" id="showTeam">Member</a>
                     <a href="index.php?controle=article&action=displayAll" class="nav-item nav-link text-dark border border-dark rounded px-3" id="displayAll">Publication</a>
                     <a href="index.php?controle=news&action=allNews" class="nav-item nav-link text-dark border border-dark rounded px-3" id="allNews">News</a>
                     <a href="index.php?controle=gallery&action=showGallery" class="nav-item nav-link border text-dark border-dark  rounded px-3" id="showGallery">Gallery</a>    
