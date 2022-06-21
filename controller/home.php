@@ -2,8 +2,6 @@
 
 function home() {
 	
-
-	
 	require("./model/adminBD.php");
 	if(displayBio($bio)) {
 		$_SESSION['bio'] = $bio;
@@ -31,15 +29,11 @@ function home() {
 		$msg='No content for the moment ! Please try later bro';
 	}
 
-	
-
-
 	require ("./view/layout/layout.tpl"); //layout lançant le template de vue du service
 }
 
 $id=isset($_POST['idixi'])?trim($_POST['idixi']):'';
 $content=isset($_POST['content'])?trim($_POST['content']):'';
-var_dump($id);
 
 if (!empty($id)) {
     
@@ -47,9 +41,8 @@ if (!empty($id)) {
 
     require($currentDirectory . "/model/contentBD.php");
     updateContent($id, $content);
-    $nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=home&action=home";
-    header ("Location:" . $nexturl);
 }
+
 
 
 ?>

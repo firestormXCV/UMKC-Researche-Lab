@@ -21,6 +21,8 @@
                             <button id=\"addLink\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Link</button>
                             <button id=\"addList\" type=\"button\" class=\"btn btn-info btn-sm\" >Add List</button>
                             <button id=\"addTitle\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Title</button>
+                            <button id=\"addBr\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Line Break</button>
+                            <button id=\"addParagraph\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Paragraph</button>
         
                             <div class=\"mb-3\">
                                 <label for=\"message-text\" class=\"col-form-label\">Content:</label>
@@ -46,9 +48,12 @@
 							<button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
 						</div>
 					<div class=\"modal-body\">
-						<form action=\"controller/bio.php\" method=\"post\" enctype=\"multipart/form-data\">
+						<form action=\"controller/modifyAdmin.php\" method=\"post\" enctype=\"multipart/form-data\">
                             <input type=\"hidden\" id=\"recipient-id\" name=\"idixi\" value=\"1\">
 							<input type=\"hidden\" id=\"recipient-id-modify\" name=\"idif\" value=\"\">
+
+                            <input type=\"hidden\" id=\"recipient-fileCV\" name=\"recipient-fileCV\" value=\"". $_SESSION['bio'][0]['cv'] ."\">
+                            <input type=\"hidden\" id=\"recipient-filePic\" name=\"recipient-filePic\" value=\"". $_SESSION['bio'][0]['pictureName'] ."\">
 							<div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">Name</label>
 								<input name=\"name\" value=\"\" required type=\"text\" class=\"form-control\" id=\"recipient-name-modify\">
@@ -63,11 +68,15 @@
 
 							</div>
 							<div class=\"mb-3\">
-								<input type=\"file\" name=\"the_file\" id=\"fileToUploadPic\">
+                                <label for=\"recipient-contact\" class=\"col-form-label\">File Profile Picture</label>
+                                <br>
+								<input type=\"file\" name=\"the_filePic\" id=\"fileToUploadPic\">
 								
 							</div>
                             <div class=\"mb-3\">
-								<input type=\"file\" name=\"the_file\" id=\"fileToUploadCV\">
+                                <label for=\"recipient-contact\" class=\"col-form-label\">File CV</label>
+                                <br>
+								<input type=\"file\" name=\"the_fileCV\" id=\"fileToUploadCV\">
 								
 							</div>
 							<div class=\"d-flex justify-content-between mt-2\">
@@ -80,9 +89,10 @@
 					</div>
 				</div>
 				</div>");
+
                 echo("<div>
                         <button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Bio</button>
-                        <button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#modifBio\" >Update Profile</button>
+                        <button onclick=\"modifyProfile();\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#modifBio\" >Update Profile</button>
                       </div>");
             }
 
@@ -110,7 +120,7 @@
                         
               </div>");
 
-              echo("<div class=\"mx-1\">
+              echo("<div id=\"bioDesc\" class=\"mx-1\">
                     
                     ". ($_SESSION['content'][3]['content']) ."
                 </div>");

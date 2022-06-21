@@ -26,32 +26,14 @@
 		}
     }
 
-	function addArticleBD($title, $autor, $fileName, $date, $type, $place, $bibtex) {
+	function modifyBioBD($name, $title, $contact,$fileNameCV, $fileNamePic) {
 		$currentDirectory = dirname (getcwd());
-
-		require($currentDirectory . "/model/connectBD.php");
-
-        $sql = "INSERT INTO `publication` (`id`, `title`, `autor`, `fileName`, `date`, `bibtex`, `place`, `type` ) VALUES (NULL, '$title', '$autor', '$fileName', '$date', '$bibtex', '$place', '$type');";
-		try {
-			$commande = $pdo->prepare($sql);
 		
-			
-
-			$bool = $commande->execute();
-		} catch (PDOException $e){
-			echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
-			die();
-		}
-	}
-
-	function modifyArticleBD($title, $autor, $date, $type, $place, $bibtex, $id, $fileName) {
-		$currentDirectory = dirname (getcwd());
-
 		require($currentDirectory . "/model/connectBD.php");
-
-		$sql = "UPDATE publication 
-					SET title ='$title' , autor = '$autor', date = '$date', bibtex = '$bibtex',place = '$place', type = '$type', fileName = '$fileName'
-					WHERE id ='$id';";
+		
+		$sql = "UPDATE admin 
+					SET name ='$name' , title = '$title', cv = '$fileNameCV', pictureName = '$fileNamePic'
+					WHERE id = 1;";
 		try {
 			
 			$commande = $pdo->prepare($sql);
@@ -62,5 +44,47 @@
 			die();
 		}
 	}
+
+	function fetch_data(&$admin){
+        
+		$currentDirectory = dirname (getcwd());
+		
+		
+		
+		require("C:/Users/33659/Documents/Cour/2A/Pweb/UwAmp/www/UMKC-Researche-Lab/model/connectBD.php");
+
+		
+		$sql = "SELECT * FROM admin WHERE id = 1;";
+		try{
+			$commande = $pdo->prepare($sql);
+			$bool = $commande->execute();
+			if ($bool) {
+				$resultat = $commande->fetchAll(PDO::FETCH_ASSOC); //tableau d'enregistrements
+				//var_dump($resultat); die(); 
+			}
+		}
+		catch (PDOException $e) {
+			echo utf8_encode("Echec de SQL : " . $e->getMessage() . "\n");
+			die(); // On arrête tout
+		}
+		if (count($resultat) == 0) {
+			$admin =array(); 
+			
+		}
+		else {
+			$admin = $resultat;
+			//var_dump($profil);
+		}
+	}
+
+	
+		$fetchData= fetch_data($admin);
+		
+		echo ($admin[0]['name'] . "¤");
+		echo ($admin[0]['title'] . "¤");
+		echo ($admin[0]['contact'] . "¤");
+		
+
+
 
 ?>

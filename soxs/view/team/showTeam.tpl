@@ -168,15 +168,15 @@
 			}
 
 		
-		echo("<div class=\"pubArray d-flex flex-column mx-auto ps-0\" >");
+		echo("<div class=\"pubArray d-flex flex-column mx-auto ps-1\" >");
 		
 		
 		if(isset($_SESSION['profil'])) {
 			echo("<button type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\" >Add Team Member</button>");
 		}
 		
-		echo("<div class=\"mx-5\">
-			<h2>Me (PI)</h2>");
+		echo("<div class=\"mx-5\">");
+		echo("<h5 styles=\"font-size = 14 !important;\" class=\"mt-1\">Current Members</h5>");
 		
 		$former = false;
 		
@@ -209,7 +209,7 @@
 			}
 		}
 		
-		echo("<h5 class=\"mt-1\">Current Member</h5>");
+		
 
 		$count = 0;
 
@@ -334,7 +334,7 @@
 		echo("</div>");
 		
 		if ($former) {
-			echo("<h2>Alumni (Phd)</h2>");
+			echo("<h5 class=\"mt-2\">Alumni (Phd)</h5>");
 
 			$count = 0;
 
@@ -374,7 +374,7 @@
 			}
 			echo("</div>");
 
-			echo("<h2>Alumni (MSC)</h2>");
+			echo("<h5 class=\"mt-2\">Alumni (MSC)</h5>");
 
 			$count = 0;
 
@@ -415,7 +415,7 @@
 			echo("</div>");
 
 			$count = 0;
-
+			echo("<h5 class=\"mt-2\">Alumni (BSC)</h5>");
 			echo("<div class=\"d-flex align-items-start grid-container\">");
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {

@@ -117,8 +117,8 @@
 						<div class=\"py-2 bd-highlight text-nowrap\">
 						<p style=\"margin-bottom: 0 !important;\">". $formatedDate ."</p>
 						</div>
-						<div class=\"py-2 bd-highlight \">
-						<p style=\"margin-bottom: 0 !important;\">: ". $news['title'] .":" .
+						<div class=\"py-2 ps-1 bd-highlight \">
+						<p style=\"margin-bottom: 0 !important;\">". $news['title'] .": " .
 					$news['content'] ."");
 					if (isset($_SESSION['profil'])) {
 						echo("

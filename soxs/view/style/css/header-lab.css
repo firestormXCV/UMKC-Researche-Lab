@@ -109,6 +109,8 @@ body {
 .homeTitle {
   background-color: white;
   color: black !important;
+  margin-bottom: 3 !important;
+  margin-top: 4 !important
 }
 
 .homeNews {
@@ -143,17 +145,17 @@ ul {
 
 h5 {
   color:black !important;
-  font-size: 12 !important;
+  font-size: 14 !important;
 }
 
 .grid-container {
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 140px));
-  max-width: 800px;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 100px)) !important;
+  max-width: 100px !important;
 }
 
 .grid-item p {
   margin-bottom: 0 !important;
-  
+  line-height: 1.2;
 }

@@ -8,6 +8,11 @@ body {
     color: #000000;
   }
 
+  img {
+    object-fit: none !important;
+
+  }
+
   .fw-bold {
     font-size: 12px !important;
   }
@@ -135,6 +140,10 @@ ul {
 h5 {
   color:black !important;
   font-size: 12 !important;
+}
+
+#bioDesc *:not() {
+  font-size: 25 !important;
 }
 
 

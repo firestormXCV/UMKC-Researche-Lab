@@ -8,14 +8,23 @@ function initNews() {
     let addList = document.getElementById("addList");
     let addTitle = document.getElementById("addTitle");
     let addBr = document.getElementById("addBr");
-    // When the user scrolls down 20px from the top of the document, show the button
+    let addParagraph = document.getElementById("addParagraph");
+    
     window.onscroll = function() {scrollFunction()};
     addLink.addEventListener("click", addLinkContent);
     addList.addEventListener("click", addListContent);
     addTitle.addEventListener("click", addTitleContent);
     addBr.addEventListener("click", addBrContent);
+    addParagraph.addEventListener("click", addParagraphContent);
 }
 
+function addParagraphContent() {
+  var curPos = document.getElementById("message-text").selectionStart;
+  let x = $("#message-text").val();
+  let text_to_insert = $("#insert").val();
+  $("#message-text").val(
+  x.slice(0, curPos) + '<p>Your Text</p>' + x.slice(curPos));
+}
 
 function addListContent() {
 
@@ -78,22 +87,6 @@ function modify(id) {
     });   
 }
 
-function modifyNews(id) {
-  $.ajax({    
-    type: "POST",
-    url: "model/modifyNewsBD.php",             
-    dataType: "html",
-    data: {id},         
-    success: function(data){       
-        console.log(data);
-        $("#recipient-title-modify").val(data.split("¤")[0])
-        $("#recipient-content-modify").val(data.split("¤")[1])
-        $("#recipient-date-modify").val(data.split("¤")[2])
-        $("#recipient-id-modify").val(id)
-    }   
-});  
-}
-
 function modifyTeam(id) {
   $.ajax({    
     type: "POST",
@@ -116,6 +109,21 @@ function modifyTeam(id) {
 });
 }
 
+function modifyProfile() {
+  $.ajax({    
+    type: "POST",
+    url: "model/adminBD.php",             
+    dataType: "html",
+    
+    success: function(data){       
+        console.log(data);
+        $("#recipient-name-modify").val(data.split("¤")[0])
+        $("#recipient-title-modify").val(data.split("¤")[1])
+        $("#recipient-contact-modify").val(data.split("¤")[2])
+    }   
+});
+}
+
 function modifyContent(id) {
   
   $.ajax({
@@ -123,10 +131,8 @@ function modifyContent(id) {
     url:"model/modifyContent.php",
     dataType: "html",
     data: {id},
-    success: function(data){
-      
-      console.log(data);
-      
+    success: function(data){   
+      console.log(data);    
       $("#message-text").val(data);
     }
   });
@@ -148,29 +154,26 @@ function deleteArticle(id, table) {
 });  
 }
 
-function jsonDisplay() {
+function scrollFunction() {
+  let mybutton = document.getElementById("myBtn");
+
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    mybutton.style.display = "block";
+  } else {
+    mybutton.style.display = "none";
+  }
+}
+
+// When the user clicks on the button, scroll to the top of the document
+function topFunction() {
+  document.body.scrollTop = 0; // For Safari
+  document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+}
+
+function updateHoverMenu(newId) {
   
-  let result;
-  $.ajax({
-    dataType: "json",
-    url: "ressources/Bio.json",
-    success: function(data){       
-      result = data;  
-      
-      $("#JsonContent").val(JSON.stringify(result).replace(/(\r\n|\n\r|\r|\n)/g, '\n'));
-      console.log('aaa') 
-      console.log(JSON.stringify(result, null, 3  ));  
-      console.log('aaa') 
-    }   
-  });
-  console.log('zzz') 
-  console.log(result);  
-  console.log('zzz') 
-  const obj = {name: "John", age: 30, city: "New York"};
-  const myJSON = JSON.stringify(obj);
-  const test = JSON.stringify(result);
-  console.log(typeof myJSON);
-  console.log(typeof result);
-  
+  let actual = document.getElementsByClassName("active")[0];
+  actual.classList.remove('active');
+  newId.classList.add('active');
 
 }
