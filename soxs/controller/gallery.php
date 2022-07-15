@@ -1,10 +1,29 @@
 <?php
 
-	$caption=isset($_POST['caption'])?trim($_POST['caption']):''; // trim pour enlever les espaces avant et apres
-	var_dump($caption);
+		
+	/**
+	 * showGallery
+	 *	Function to show the gallery page
+	 * @return void
+	 */
+	function showGallery() {
+		require("./model/galleryBD.php");
+		if(displayPicture($pictures)){
+			$_SESSION['pictures'] = $pictures;			
+		}
+		else{
+			$msg='No article for the moment ! Please try later';
+		}
+
+		require ("./view/layout/layout-lab.tpl"); //layout lançant le template de vue du service
+		
+	}
+
+	$caption=isset($_POST['caption'])?trim($_POST['caption']):''; // trim to delete the space before and after string
+
 	if($caption != '') {
 
-		$uploadDirectory = "\\ressources\gallery\\";
+		$uploadDirectory = "/ressources/gallery/";
 		$currentDirectory = dirname (getcwd());
 		$errors = []; // Store errors here
 
@@ -26,7 +45,7 @@
 			$errors[] = "This file extension is not allowed. Please upload a JPEG, JPG or PNG file";
 		}
 
-		if ($fileSize > 4000000) {
+		if ($fileSize > 4000000) {								//Max size of the file in Bytes
 			$errors[] = "File exceeds maximum size (4MB)";
 		}
 
@@ -51,19 +70,5 @@
 		$nexturl = "http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=gallery&action=showGallery";
 		header ("Location:" . $nexturl);
 	} 
-
-	function showGallery() {
-		require("/model/galleryBD.php");
-		if(displayPicture($pictures)){
-			$_SESSION['pictures'] = $pictures;
-
-		}
-		else{
-			$msg='No article for the moment ! Please try later bro';
-		}
-	
-		require ("./view/layout/layout-lab.tpl"); //layout lançant le template de vue du service
-		
-	}
 
 ?>

@@ -29,16 +29,20 @@
 						</div>
 
 						<div class=\"form-check form-check-inline\">
-								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio1\" value=\"option1\">
+								<input required class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio1\" value=\"PhD\">
 								<label class=\"form-check-label\" for=\"inlineRadio1\">PhD</label>
 						</div>
 						<div class=\"form-check form-check-inline\">
-								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio2\" value=\"option2\">
+								<input required class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio2\" value=\"MSC\">
 								<label class=\"form-check-label\" for=\"inlineRadio2\">MSC</label>
 						</div>
 						<div class=\"form-check form-check-inline\">
-								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio3\" value=\"option3\">
+								<input required class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio3\" value=\"BSC\">
 								<label class=\"form-check-label\" for=\"inlineRadio3\">BSC</label>
+						</div>
+						<div class=\"form-check form-check-inline\">
+								<input required class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio4\" value=\"Other\">
+								<label class=\"form-check-label\" for=\"inlineRadio4\">Other</label>
 						</div>
 
                         <div class=\"mb-3\">
@@ -108,18 +112,21 @@
 						</div>
 
 						<div class=\"form-check form-check-inline\">
-								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio1\" value=\"option1\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio1\" value=\"PhD\">
 								<label class=\"form-check-label\" for=\"inlineRadio1\">PhD</label>
 						</div>
 						<div class=\"form-check form-check-inline\">
-								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio2\" value=\"option2\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio2\" value=\"MSC\">
 								<label class=\"form-check-label\" for=\"inlineRadio2\">MSC</label>
 						</div>
 						<div class=\"form-check form-check-inline\">
-								<input class=\"form-check-input\" type=\"radio\" name=\"inlineRadioOptions\" id=\"inlineRadio3\" value=\"option3\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio3\" value=\"BSC\">
 								<label class=\"form-check-label\" for=\"inlineRadio3\">BSC</label>
 						</div>
-
+						<div class=\"form-check form-check-inline\">
+								<input class=\"form-check-input\" type=\"radio\" name=\"grade\" id=\"inlineRadio4\" value=\"Other\">
+								<label class=\"form-check-label\" for=\"inlineRadio4\">Other</label>
+						</div>
                         <div class=\"mb-3\">
 								<label for=\"recipient-name\" class=\"col-form-label\">EMail</label>
 								<input name=\"eMail\"  type=\"text\" class=\"form-control\" id=\"recipient-email-modify\">
@@ -179,7 +186,7 @@
 		echo("<h5 styles=\"font-size = 14 !important;\" class=\"mt-1\">Current Members</h5>");
 		
 		$former = false;
-		
+		// Display professor Farid card
 		foreach($_SESSION['team'] as $team) {
 			if ($team['name'] == 'Farid' && $team['famillyName'] == 'Naït-Abdesselam') {
 				echo("
@@ -212,14 +219,22 @@
 		
 
 		$count = 0;
-
-		echo("<div class=\"d-flex align-items-start grid-container\">");
+		// Display current PhD team Member
 		foreach($_SESSION['team'] as $team) {
+			
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
 			}
 			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'PhD') {
-			echo("
+				if ($count == 0) {
+					echo("<div class=\"d-flex grid-container\">");
+				} else if ($count == 7){
+					echo("</div>
+						<div class=\"d-flex grid-container\">");
+						$count = 0;
+				}
+				$count++;
+				echo("
 			
 				<div class=\"grid-item\">
 					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
@@ -241,23 +256,31 @@
 					if(isset($_SESSION['profil'])) {
 						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
 					}
-				echo("</div>
-				");
+				echo("</div>");
 			} else {
 				$former = true;
 			}
+			
 		}
 		echo("</div>");
 
 		$count = 0;
-		
-		echo("<div class=\"d-flex align-items-start grid-container\">");
+		// Display current MSC team Member
 		foreach($_SESSION['team'] as $team) {
+			
 			if ($team['pictureName'] == "NULL") {
 				$team['pictureName'] = "nobody.jpg";
 			}
 			if ($team['endDate'] == "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'MSC') {
-			echo("
+				if ($count == 0) {
+					echo("<div class=\"d-flex grid-container\">");
+				} else if ($count == 7){
+					echo("</div>
+						<div class=\"d-flex grid-container\">");
+						$count = 0;
+				}
+				$count++;
+				echo("
 			
 				<div class=\"grid-item\">
 					<img class=\"m-3 rounded-circle\" src=\"./ressources/profilPicture/" . $team['pictureName']. "\" alt=\"PP\" width=\"100\" height=\"100\"/>
@@ -279,16 +302,16 @@
 					if(isset($_SESSION['profil'])) {
 						echo("<button id=\"tootoo\" onclick=\"modifyTeam(".  $team['id'] ."	);\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#modifyModal\" ><i class=\"bi bi-pencil\"></i></button>");
 					}
-				echo("</div>
-				");
+				echo("</div>");
 			} else {
 				$former = true;
 			}
+			
 		}
 		echo("</div>");
 		
 		$count = 0;
-		
+		// Display current BSC team Member
 		foreach($_SESSION['team'] as $team) {
 			
 			if ($team['pictureName'] == "NULL") {
@@ -332,18 +355,26 @@
 			
 		}
 		echo("</div>");
-		
+		// Display Former team Member
 		if ($former) {
 			echo("<h5 class=\"mt-2\">Alumni (Phd)</h5>");
 
 			$count = 0;
-
-			echo("<div class=\"d-flex align-items-start grid-container\">");
+			// Display Former PhD team Member
+			
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
 				}
 				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'PhD') {
+					if ($count == 0) {
+						echo("<div class=\"d-flex grid-container\">");
+					} else if ($count == 7){
+						echo("</div>
+							<div class=\"d-flex grid-container\">");
+							$count = 0;
+					}
+					$count++;
 				echo("
 				
 					<div class=\"grid-item\">
@@ -377,13 +408,21 @@
 			echo("<h5 class=\"mt-2\">Alumni (MSC)</h5>");
 
 			$count = 0;
-
-			echo("<div class=\"d-flex align-items-start grid-container\">");
+			// Display Former MSC team Member
+			
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
 				}
 				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'MSC') {
+					if ($count == 0) {
+						echo("<div class=\"d-flex grid-container\">");
+					} else if ($count == 7){
+						echo("</div>
+							<div class=\"d-flex grid-container\">");
+							$count = 0;
+					}
+					$count++;
 				echo("
 				
 					<div class=\"grid-item\">
@@ -415,13 +454,22 @@
 			echo("</div>");
 
 			$count = 0;
+			// Display Former BSC team Member
 			echo("<h5 class=\"mt-2\">Alumni (BSC)</h5>");
-			echo("<div class=\"d-flex align-items-start grid-container\">");
+			
 			foreach($_SESSION['team'] as $team) {
 				if ($team['pictureName'] == "NULL") {
 					$team['pictureName'] = "nobody.jpg";
 				}
 				if ($team['endDate'] != "0000-00-00" && $team['name'] != 'Farid' && $team['famillyName'] != 'Naït-Abdesselam' && $team['grade'] == 'BSC') {
+					if ($count == 0) {
+						echo("<div class=\"d-flex grid-container\">");
+					} else if ($count == 7){
+						echo("</div>
+							<div class=\"d-flex grid-container\">");
+							$count = 0;
+					}
+					$count++;
 				echo("
 				
 					<div class=\"grid-item\">
@@ -453,6 +501,27 @@
 			echo("</div>");
 		}
 
+		echo("<h5 class=\"mt-2\">Other</h5>");
+		echo("<ul>");
+		// Display Former Other team Member
+		foreach($_SESSION['team'] as $team) {
+			if ($team['grade'] == "Other") {
+				echo("<li>
+				<bold class=\"fw-bold\">".$team['name']." ". $team['famillyName'] ." </bold> - ".$team['diploma']." - " . $team['researchInterest'] .
+				 " - " . $team['startDate']);
+				 if ($team['endDate'] != '0000-00-00') {
+					echo ($team['endDate']);
+				 } 
+				 if ($team['email'] != 'NULL') {
+					echo($team['email']);
+				 }
+				 if ($team['homepage'] != 'NULL')  {
+				 	echo($team['homepage']);
+				 }
+				echo("</li>");
+			}
+		}
+		echo("<ul>");
 		echo("
 				</div>
 				</div>");

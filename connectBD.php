@@ -1,20 +1,15 @@
 <?php
 		
 
-	//$hostname = "kc-isia-mysqlpl";	//ou localhost
-	//$base= "soxs-lab-data";
-	//$loginBD= "soxslabdata_user";	//ou "root"
-	//$passBD="254QkcU11Kyb";
+	$hostname = "kc-isia-mysqlpl";	//ou localhost
+	$base= "soxs-lab-data";
+	$loginBD= "soxslabdata_user";	//ou "root"
+	$passBD="254QkcU11Kyb";
 	//$pdo = null;
-
-	$hostname = "localhost";	//ou localhost
-	$base= "umkc-lab";
-	$loginBD= "root";	//ou "root"
-	$passBD="root";
 
 try {
 
-	$pdo = new PDO ("mysql:server=$hostname; dbname=$base", "$loginBD", "$passBD");
+	$pdo = new PDO ("mysql:host=$hostname;dbname=$base", "$loginBD", "$passBD");
 }
 
 catch (PDOException $e) {

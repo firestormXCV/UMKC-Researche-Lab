@@ -1,7 +1,9 @@
 <?php
 
-$uploadDirectoryCV = "\\ressources\\";
-$uploadDirectoryPic = "\\ressources\profilPicture\\";
+//File to update the profile of the admin on the home page
+
+$uploadDirectoryCV = "/ressources/";
+$uploadDirectoryPic = "/ressources/profilPicture/";
 $currentDirectory = dirname (getcwd());
 $errors = []; // Store errors here
 
@@ -19,12 +21,13 @@ $fileTmpNamePic  = $_FILES['the_filePic']['tmp_name'];
 $fileTypePic = $_FILES['the_filePic']['type'];
 $fileExtensionPic = strtolower(end(explode('.',$fileNamePic)));
 
+//All the process above is explain in the file article.php, exactly the same functionnement.
 
 $name=isset($_POST['name'])?trim($_POST['name']):''; // trim pour enlever les espaces avant et apres
 $title=isset($_POST['title'])?trim($_POST['title']):'';
 $contact=isset($_POST['contact'])?trim($_POST['contact']):'';
-$nameCV=isset($_POST['recipient-fileCV'])?trim($_POST['recipient-fileCV']):'';
-$namePic=isset($_POST['recipient-filePic'])?trim($_POST['recipient-filePic']):'';
+$nameCV=isset($_POST['recipient-fileCV'])?trim($_POST['recipient-fileCV']):'';      //Name of the current CV file
+$namePic=isset($_POST['recipient-filePic'])?trim($_POST['recipient-filePic']):'';   //Name of the current Profile picture file
 
 
 $uploadPathCV = $currentDirectory . $uploadDirectoryCV . basename($fileNameCV); 
@@ -41,11 +44,6 @@ $uploadPathPic = $currentDirectory . $uploadDirectoryPic . basename($fileNamePic
         $errors[] = "File exceeds maximum size (4MB)";
       }
 
-
-
-        
-       
-
       if ($fileNameCV != '') {
         $didUploadCV = move_uploaded_file($fileTmpNameCV, $uploadPathCV);
       }
@@ -56,24 +54,19 @@ $uploadPathPic = $currentDirectory . $uploadDirectoryPic . basename($fileNamePic
     }
     require($currentDirectory . "/model/adminBD.php");
 
-    var_dump($fileNameCV, $fileNamePic);
-    var_dump($fileNameCV == '');
-    var_dump($fileNamePic == '');
-    
-    if ($fileNameCV == '') {
-      $fileNameCV = $nameCV;
+    if ($fileNameCV == '') { //if $fileNameCV is empty it mean CV as bnot been updated
+      $fileNameCV = $nameCV;  //Then keep the previous CV file
     }
-    if ($fileNamePic == '') {
+    if ($fileNamePic == '') { //same for the profile picture
       
 
       $fileNamePic = $namePic;
-    }
-    var_dump($fileNameCV, $fileNamePic);
+    }    
     
-    
+    //update the Bio with the given data
     modifyBioBD($name, $title, $contact,$fileNameCV, $fileNamePic);
 
 
 $nexturl = "http://localhost/UMKC-Researche-Lab/index.php?controle=home&action=home";
-header ("Location:" . $nexturl);
+header ("Location:" . $nexturl);  //refresh the home page
 ?>

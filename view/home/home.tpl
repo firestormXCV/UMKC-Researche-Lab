@@ -7,7 +7,7 @@
             
             $admin = $_SESSION["bio"];
 
-            if(isset($_SESSION['profil'])) {
+            if(isset($_SESSION['profil'])) {    //Modal to modify the bio, send the data to home.php with POST method
                 echo("<div class=\"modal fade\" id=\"ServicesModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
                 <div class=\"modal-dialog modal-xl\">
                     <div class=\"modal-content\">
@@ -38,8 +38,9 @@
                     </div>
                     
                     </div>
-                </div>
-                </div>
+                </div>");
+                //Modal to update the profile, send the data to modifyAdmin.php with POST Method
+                echo("</div>    
                 <div class=\"modal fade\" id=\"modifBio\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
 				<div class=\"modal-dialog  modal-xl\">
 					<div class=\"modal-content\">
@@ -89,13 +90,13 @@
 					</div>
 				</div>
 				</div>");
-
+                //Button to open the modal above
                 echo("<div>
                         <button onclick=\"modifyContent(".  $_SESSION['content'][3]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Bio</button>
                         <button onclick=\"modifyProfile();\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#modifBio\" >Update Profile</button>
                       </div>");
             }
-
+                //Left side of the screen, profile of the admin, picture and short information
                 echo("<div class=\" d-flex flex-rom pb-4\" style=\" width: 100%;\">
 											
                     <div class=\"pe-2 bd-highlight\">
@@ -119,43 +120,21 @@
                 </div>
                         
               </div>");
-
+                //Bio of the admin, under the profile
               echo("<div id=\"bioDesc\" class=\"mx-1\">
                     
                     ". ($_SESSION['content'][3]['content']) ."
                 </div>");
 
-            /*foreach($admin["content"] as $content) {
-
-                
-
-                  echo("<h5 class=\"homeTitle\">" . $content["title"]. " ");
-                  if(isset($_SESSION['profil'])) {
-                      echo("<button id=\"tootoo\" onclick=\"jsonDisplay();\" type=\"button\" class=\"btn\" data-bs-toggle=\"modal\" data-bs-target=\"#jsonModal\" ><i class=\"bi bi-plus-lg\"></i></button></h5>");
-                  } else {
-                      echo("</h5>");
-                  }
-                  
-
-                if (count($content["content"]) > 1) {
-                    foreach($content["content"] as $inside) {
-                        
-                        echo("<ul>");
-                        echo(
-                        "<li class=\"home\">". $inside . "</li>");
-                        echo("</ul>"); 
-                    }                   
-                } else {
-                    echo("<p class=\"ms-3\">". $content["content"][0] . "</p>");
-                }                
-            }*/
             ?>
         </div>
+        <!-- right side of the screen -->
         <div class="d-flex flex-column w-100 pe-4">
             
             <div class="d-flex flex-column mb-5">
                 <h5 class="homeTitle flex-fill">Last News</h5>
                 <?php
+                    //display the 5 last news
                     $currentDate = '2038-01-10';
                     $begin = true;
                     $i = 0;
@@ -208,8 +187,8 @@
                     </table>
                     ");
                 ?>
-                <a href="http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=news&action=allNews">See more...</a>
-                <div class="me-4">
+                <a href="http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=news&action=allNews">See more...</a> <!-- send to the page news -->
+                <div class="me-4"> <!-- Twitter feed of the UMKC -->
                     <a class="twitter-timeline" data-height="800" href="https://twitter.com/UMKC?ref_src=twsrc%5Etfw">Tweets by UMKC</a>
                     <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
                 </div>

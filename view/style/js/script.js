@@ -52,7 +52,7 @@ function addListContent() {
   let x = $("#message-text").val();
   let text_to_insert = $("#insert").val();
   $("#message-text").val(
-  x.slice(0, curPos) + '<a href=Your Link" target="_blank">The text of the link</a>' + x.slice(curPos));
+  x.slice(0, curPos) + '<a href="Your Link" target="_blank\">The text of the link</a>' + x.slice(curPos));
 
 }  
 

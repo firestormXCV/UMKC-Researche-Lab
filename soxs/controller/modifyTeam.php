@@ -1,7 +1,7 @@
 <?php
 
 
-$uploadDirectory = "\\ressources\profilPicture\\";
+$uploadDirectory = "/ressources/profilPicture/";
 $currentDirectory = dirname (getcwd());
 $errors = []; // Store errors here
 
@@ -22,6 +22,7 @@ $researchInterest=isset($_POST['researchInterest'])?trim($_POST['researchInteres
 $startDate=isset($_POST['startDate'])?trim($_POST['startDate']):'';
 $endDate=(isset($_POST['endDate'])&&!empty($_POST['endDate']))?trim($_POST['endDate']):"0000-00-00";
 $id=isset($_POST['id'])?trim($_POST['id']):'';
+$grade=(isset($_POST['grade'])&&!empty($_POST['grade']))?trim($_POST['grade']):'';
 
 $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName); 
 
@@ -53,7 +54,7 @@ $uploadPath = $currentDirectory . $uploadDirectory . basename($fileName);
     }
 
 require($currentDirectory . "/model/teamBD.php");
-modifyTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $id, $fileName);
+modifyTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $id, $fileName, $grade);
         
 
 

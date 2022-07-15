@@ -27,46 +27,59 @@
 		}
     }
 
-	function addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $pictureName) {
+	function addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $pictureName, $grade) {
 		$currentDirectory = dirname (getcwd());
 		require($currentDirectory . "/model/connectBD.php");
-   
-        $sql = "INSERT INTO `team` (`id`, `name`, `famillyName`, `diploma`, `pictureName`, `startDate`, `endDate`, `researchInterest`, `email` , `homepage`) 
-            VALUES (NULL, '$firstName', '$lastName', '$diploma', '$pictureName', '$startDate', '$endDate', '$researchInterest', '$eMail', '$homepage');";
+		
+        $sql = "INSERT INTO `team` (`id`, `name`, `famillyName`, `diploma`, `pictureName`, `startDate`, `endDate`, `researchInterest`, `email` , `homepage`, `grade`) 
+            VALUES (NULL, '$firstName', '$lastName', '$diploma', '$pictureName', '$startDate', '$endDate', '$researchInterest', '$eMail', '$homepage', '$grade');";
 		try {
 			$commande = $pdo->prepare($sql);
 			$bool = $commande->execute();
-			
+
 		} catch (PDOException $e){
 			echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
 			die();
 		}
 	}
 
-	function modifyTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $id, $fileName) {
+	function modifyTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $id, $fileName, $grade) {
 		$currentDirectory = dirname (getcwd());
-			
+		
 		require($currentDirectory . "/model/connectBD.php");
 		if (!empty($fileName)) {
-
-			$sql = "UPDATE team 
-			SET name ='$firstName' , famillyName = '$lastName', email = '$eMail', homepage = '$homepage', diploma = '$diploma',
-			 researchInterest = '$researchInterest', startDate = '$startDate', endDate = '$endDate', pictureName = '$fileName'
-			WHERE id ='$id';";
-
+			if (!empty($grade)) {
+				$sql = "UPDATE team 
+				SET name ='$firstName' , famillyName = '$lastName', email = '$eMail', homepage = '$homepage', diploma = '$diploma',
+				researchInterest = '$researchInterest', startDate = '$startDate', endDate = '$endDate', pictureName = '$fileName', grade ='$grade'
+				WHERE id ='$id';";
+			} else {
+				$sql = "UPDATE team 
+				SET name ='$firstName' , famillyName = '$lastName', email = '$eMail', homepage = '$homepage', diploma = '$diploma',
+				researchInterest = '$researchInterest', startDate = '$startDate', endDate = '$endDate', pictureName = '$fileName'
+				WHERE id ='$id';";
+			}
 		} else {
-			$sql = "UPDATE team 
-			SET name ='$firstName' , famillyName = '$lastName', email = '$eMail', homepage = '$homepage', diploma = '$diploma',
-			 researchInterest = '$researchInterest', startDate = '$startDate', endDate = '$endDate'
-			WHERE id ='$id';";
+			if (!empty($grade)) {
+				$sql = "UPDATE team 
+				SET name ='$firstName' , famillyName = '$lastName', email = '$eMail', homepage = '$homepage', diploma = '$diploma',
+				researchInterest = '$researchInterest', startDate = '$startDate', endDate = '$endDate', grade ='$grade'
+				WHERE id ='$id';";
+			} else {
+				$sql = "UPDATE team 
+				SET name ='$firstName' , famillyName = '$lastName', email = '$eMail', homepage = '$homepage', diploma = '$diploma',
+				researchInterest = '$researchInterest', startDate = '$startDate', endDate = '$endDate'
+				WHERE id ='$id';";
+			}
 		}
 		
 					
 		
 		try {
+			
 			$commande = $pdo->prepare($sql);
 			$bool = $commande->execute();
-			var_dump($sql);
+			
 		} catch (PDOException $e){
 			var_dump($sql);
 			echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;

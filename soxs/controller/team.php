@@ -15,7 +15,7 @@ if (!empty($firstName)) {
     $currentDirectory = dirname (getcwd());
     if(!empty($_FILES['the_file']['name'])) {
 
-        $uploadDirectory = "\\ressources\profilPicture\\";
+        $uploadDirectory = "/ressources/profilPicture/";
         
         $errors = []; // Store errors here
 
@@ -68,7 +68,7 @@ if (!empty($firstName)) {
         $fullName = "NULL";
     }
     require($currentDirectory . "/model/TeamBD.php");
-
+    
     addTeamBD($firstName, $lastName, $eMail, $homepage, $diploma, $researchInterest, $startDate, $endDate, $fullName, $grade);
     
     $nexturl = "http://localhost/UMKC-Researche-Lab/soxs/index.php?controle=team&action=showTeam";

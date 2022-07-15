@@ -47,11 +47,13 @@
 
 	function fetch_data(&$admin){
         
+		
+		
 		$currentDirectory = dirname (getcwd());
-		
-		
-		
+
 		require("C:/Users/33659/Documents/Cour/2A/Pweb/UwAmp/www/UMKC-Researche-Lab/model/connectBD.php");
+		//require($currentDirectory . "\model\adminBD.php");
+		
 
 		
 		$sql = "SELECT * FROM admin WHERE id = 1;";

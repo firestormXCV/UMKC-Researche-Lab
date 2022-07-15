@@ -1,6 +1,6 @@
 <?php
 
-    $uploadDirectory = "\\ressources\publication\\";
+    $uploadDirectory = "/ressources/publication/";
     $currentDirectory = dirname (getcwd());
     $errors = []; // Store errors here
 

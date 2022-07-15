@@ -12,6 +12,7 @@ function addPictureBD($caption, $fileName) {
         
 
         $bool = $commande->execute();
+
     } catch (PDOException $e){
         echo utf8_encode("Echec insert into : " . $e->getMessage() . "\n") ;
         die();

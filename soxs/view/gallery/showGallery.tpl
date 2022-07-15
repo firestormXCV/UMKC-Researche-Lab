@@ -11,7 +11,7 @@ echo("
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
     </div>
     <div class=\"modal-body\">
-        <form action=\"controller/gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
+        <form action=\"./controller/gallery.php\" method=\"post\" enctype=\"multipart/form-data\">
         <div class=\"mb-3\">
                 <label for=\"recipient-name\" class=\"col-form-label\">Caption</label>
                 <input name=\"caption\" required type=\"text\" class=\"form-control\" id=\"recipient-name\">

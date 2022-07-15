@@ -12,7 +12,7 @@
             </div>
             <div class=\"modal-body\">
                 <form action=\"controller/personal.php\" method=\"post\" enctype=\"multipart/form-data\">
-                <input type=\"hidden\" id=\"recipient-id\" name=\"idix\" value=\"". $_SESSION['content'][2]['id'] ."\">
+                <input type=\"hidden\" id=\"recipient-id\" name=\"idixi\" value=\"". $_SESSION['content'][2]['id'] ."\">
                     <button id=\"addLink\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Link</button>
                     <button id=\"addList\" type=\"button\" class=\"btn btn-info btn-sm\" >Add List</button>
                     <button id=\"addTitle\" type=\"button\" class=\"btn btn-info btn-sm\" >Add Title</button>
@@ -38,10 +38,10 @@
 		echo("<button onclick=\"modifyContent(".  $_SESSION['content'][2]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Personal</button>");
 	}
 
-    echo("<div class=\"mx-5\">
+    echo("<div class=\"contentList mx-5\">
        ". nl2br($_SESSION['content'][2]['content']) ."
     </div>");
-
+    
     ?>
 
 </div>

@@ -40,7 +40,7 @@
 		echo("<button onclick=\"modifyContent(".  $_SESSION['content'][1]['id'] .");\" type=\"button\" class=\"btn btn-primary  mt-4 mb-2 mx-auto \" data-bs-toggle=\"modal\" data-bs-target=\"#ServicesModal\" >Update Services</button>");
 	}
 
-    echo("<div class=\"mx-5\">
+    echo("<div class=\"contentList mx-5\">
        ". nl2br($_SESSION['content'][1]['content']) ."
     </div>");
 
